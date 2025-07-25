@@ -80,7 +80,7 @@ export default function Footer() {
 
                     </div>
 
-                    <button style={{background: color.switchbg}} type="button" className="  py-3 rounded-[10px] w-full font-work-sans font-medium text-base mt-2 text-white    "  >Subscribe</button>
+                    <button style={{background: '#4B6BFB'}} type="button" className="  py-3 rounded-[10px] w-full font-work-sans font-medium text-base mt-2 text-white    "  >Subscribe</button>
                 </div>
             </div>
         </div>
