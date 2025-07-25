@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import colorSchema from '../../../colors/colorSchema'
 
 export default function NavLinks() {
@@ -13,6 +13,7 @@ export default function NavLinks() {
   ]
 
   const color = colorSchema()
+  const location = useLocation();
 
 
   return (
@@ -20,7 +21,7 @@ export default function NavLinks() {
        
        {allnavs.map((item, index) => {
         return (
-          <Link style={{color: color.textprimary}} to={item.ref} className='flex gap-2 items-center font-work-sans font-normal text-base leading-6   ' key={index}  >{item.name}</Link>
+          <Link style={{color: location.pathname == item.ref ? '#4B6BFB' : color.textprimary}} to={item.ref} className='flex gap-2 items-center font-work-sans font-normal text-base leading-6   ' key={index}  >{item.name}</Link>
         )
        })}
     </div>

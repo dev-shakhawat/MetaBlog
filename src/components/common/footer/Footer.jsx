@@ -80,7 +80,7 @@ export default function Footer() {
 
                     </div>
 
-                    <button style={{background: '#4B6BFB'}} type="button" className="  py-3 rounded-[10px] w-full font-work-sans font-medium text-base mt-2 text-white    "  >Subscribe</button>
+                    <button style={{background: '#4B6BFB'}} type="button" className=" cursor-pointer py-3 rounded-[10px] w-full font-work-sans font-medium text-base mt-2 text-white    "  >Subscribe</button>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@ export default function Footer() {
                <Logo  />
                 <p style={{color: color.textprimary}} className="font-work-sans font-normal text-base   ">© JS Template 2023. All Rights Reserved.</p>
 
-                <ul className="flex items-center gap-5   ">
+                <ul className="flex items-center gap-5 ml-5  ">
                     <li style={{color: color.textprimary}} className="font-work-sans font-normal text-base  ">
                         <Link to={'terms'}>Terms of Use</Link>
                     </li>

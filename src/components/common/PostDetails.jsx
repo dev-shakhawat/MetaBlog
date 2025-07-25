@@ -1,12 +1,12 @@
 import React from 'react'
 import colorSchema from '../../colors/colorSchema'
 
-export default function PostDetails({tag , title , posterimage , postername , postdate , className}) {
+export default function PostDetails({tag , title , posterimage , postername , postdate , className }) {
 
     const color = colorSchema()
 
   return (
-    <div style={{background: color.bgprimary}} className={`  rounded-[10px] ${className} `}  >
+    <div style={{  background:  color.bgprimary}} className={`  rounded-[10px] ${className} `}  >
       
       <p  className="font-work-sans font-medium text-sm leading-5 text-[] capitalize bg-[#4B6BFB]/10 text-[#4B6BFB] py-1 px-2.5 rounded-[5px] w-fit   " >{tag}</p>
       
