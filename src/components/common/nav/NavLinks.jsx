@@ -9,7 +9,7 @@ export default function NavLinks() {
     {name: "Blogs", ref: "/blogs"},
     {name: "Single Post", },
     {name: "Contact us", ref: "/contact"},
-    {name: "Login", ref: "/auth"}, 
+    {name: "Get start", ref: "/auth"}, 
   ]
 
   const color = colorSchema()

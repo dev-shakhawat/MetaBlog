@@ -10,7 +10,7 @@ export default function ContactBanner() {
       const viewer = new Viewer({
         container: viewerRef.current,
         panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
-        caption: 'Parc national du Mercantour <b>&copy; Damien Sorel</b>',
+        caption: 'Md. Shakhawat Hossain',
       });
 
       return () => {

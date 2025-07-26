@@ -22,8 +22,8 @@ function colorSchema() {
         
         // dark mode
         "dark": {
-            "bgprimary": "#181A2A", 
-            "bgsecondary": "#242535",
+            "bgprimary": "#111827", 
+            "bgsecondary": "#374151",
             "switchbg" : "#4B6BFB",
             "textprimary": "#ffffff",
             "textsecondary": "#97989F",
