@@ -8,7 +8,7 @@ export default function NavLinks() {
     {name: "Home", ref: "/"},
     {name: "Blogs", ref: "/blogs"},
     {name: "Single Post", },
-    {name: "Contact", ref: "/contact"},
+    {name: "Contact us", ref: "/contact"},
     {name: "Login", ref: "/auth"}, 
   ]
 
