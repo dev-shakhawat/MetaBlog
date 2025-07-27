@@ -27,9 +27,9 @@ export default function Signin() {
 
     <div className="flex flex-col gap-5  "> 
           
-        <InputField title="email" name={`email`} onChange={handleChange} value={values.email} />
+        <InputField title="Your email" placeholder={`Your email`} name={`email`} onChange={handleChange} value={values.email} />
 
-        <InputField title="password" name={`password`} onChange={handleChange} value={values.password} />
+        <InputField title="Your password" placeholder={`Your password`} name={`password`} onChange={handleChange} value={values.password} />
 
         <button type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium text-base leading-6   ' >Create an account</button>
         

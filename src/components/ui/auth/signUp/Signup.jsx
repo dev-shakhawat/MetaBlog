@@ -30,11 +30,11 @@ export default function Signup() {
 
         <div className="flex flex-col gap-5  "> 
             
-            <InputField title="name" name={`name`} onChange={handleChange} value={values.name} />
+            <InputField title="Name" placeholder={`Your name`} name={`name`} onChange={handleChange} value={values.name} />
 
-            <InputField title="email" name={`email`} onChange={handleChange} value={values.email} />
+            <InputField title="Email" placeholder={`Your email`} name={`email`} onChange={handleChange} value={values.email} />
 
-            <InputField title="password" name={`password`} onChange={handleChange} value={values.password} />
+            <InputField title="Password" placeholder={`Your password`} name={`password`} onChange={handleChange} value={values.password} />
 
             <div className="flex gap-2 ">
                 <input type="checkbox" />

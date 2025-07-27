@@ -3,6 +3,7 @@ import Container from '../components/common/Container'
 import Signup from '../components/ui/auth/signUp/Signup'
 import Signin from '../components/ui/auth/signIn/Signin'
 import { useSelector } from 'react-redux'
+import ForgetPass from '../components/ui/auth/forgetPassword/ForgetPass'
 
 export default function Auth() {
 
@@ -17,7 +18,7 @@ export default function Auth() {
        
        {authval === "signup" &&  <Signup/>}
        {authval === "signin" &&  <Signin/>}
-       {/* {authval === "reset" &&  <Signin/>} */}
+       {authval === "reset" &&  <ForgetPass/>}
        
 
       </Container>
