@@ -18,6 +18,7 @@ export default function Google({ className }) {
       if(user){
         const response = await fetch('https://blog-backend-production-9410.up.railway.app/auth/continueWithGoogle', {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -26,7 +27,6 @@ export default function Google({ className }) {
              email: user.email,
              password: user.uid
           }) ,
-          credentials: 'include'
         })
 
         const data = await response.json()
