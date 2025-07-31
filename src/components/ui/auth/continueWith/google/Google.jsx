@@ -11,9 +11,7 @@ export default function Google({ className }) {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken; 
+      const user = result.user; 
       
       if(user){
         const response = await fetch('https://blog-backend-production-9410.up.railway.app/auth/continueWithGoogle', {
