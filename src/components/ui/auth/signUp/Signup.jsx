@@ -16,7 +16,23 @@ export default function Signup() {
     const { handleChange, handleSubmit, values , errors } = useFormik({
       initialValues: signupValues,
       validationSchema: signupValuesSchema,
-      onSubmit: (values) => {
+      onSubmit: async (values) => {
+        
+        await fetch('http://localhost:3000/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+             name: values.name,
+             email: values.email,
+             password: values.password
+          }) 
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+
     },
 });
  
@@ -36,9 +52,8 @@ export default function Signup() {
 
             <InputField title="Password" placeholder={`Your password`} name={`password`} onChange={handleChange} value={values.password} />
 
-            <div className="flex gap-2 ">
-                <input type="checkbox" />
-                <h2 style={{color: color.textprimary}}  >I accept the <Link to={`/terms`} className='font-semibold text-blue-500 ' >Terms and Conditions</Link></h2>
+            <div className="flex gap-2 "> 
+                <h2 style={{color: color.textprimary}}  >By creating an account, you accept the <Link to={`/terms`} className='font-semibold text-blue-500 ' >Terms and Conditions</Link></h2>
             </div>
 
             <button type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium text-base leading-6   ' >Create an account</button>
