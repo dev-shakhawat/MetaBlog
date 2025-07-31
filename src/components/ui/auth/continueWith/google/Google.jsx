@@ -16,16 +16,16 @@ export default function Google({ className }) {
       if(user){
         const response = await fetch('https://blog-backend-production-9410.up.railway.app/auth/continueWithGoogle', {
           method: 'POST',
-          credentials: 'include',
+          credentials: 'include', 
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-             name: user.displayName,
-             email: user.email,
-             password: user.uid
-          }) ,
-        })
+            name: user.displayName,
+            email: user.email,
+            password: user.uid,
+          }),
+        });
 
         const data = await response.json()
         console.log(data);
