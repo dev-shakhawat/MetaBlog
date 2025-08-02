@@ -1,25 +1,34 @@
 import React, { useMemo, useState } from 'react'
 import colorSchema from '../../../../colors/colorSchema'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // icons
 import { IoCloseOutline } from "react-icons/io5";
 import { HiPhoto } from "react-icons/hi2";
 import { WiDaySunny } from "react-icons/wi";
+
+
+// redux
+import { poststatus , hasStatus } from '../../../../redux/slices/notificationSlice'; 
+
+// components
 import PostCategory from './PostCategory';
+import Status from '../../../common/Status';
 
 export default function PostBox() {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
+    const postingstatus = useSelector((state) => state.notify.isPosting);
+    const postStatus = useSelector((state) => state.notify.status);
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [image, setImage] = useState(null);
     const [featuredImage , setFeaturedImage] = useState(null);
     const [category, setCategory] = useState('Technology');
-     
-    console.log(category);
+    const dispatch = useDispatch();
+    
     
     
 
@@ -36,6 +45,8 @@ export default function PostBox() {
     
     const handlePostSubmit = () => {
 
+        dispatch(poststatus(true));
+
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', text);
@@ -51,12 +62,38 @@ export default function PostBox() {
             body: formData
           })
           .then(response => response.json())
-          .then(data => console.log(data))
-          .catch(error => console.error(error));
+          .then(data => {
+            dispatch(poststatus(false));
+            dispatch(hasStatus(data));
+            setTimeout(() => {
+                dispatch(hasStatus(null)); 
+            }, 2500);
+            if(data.status === true){ 
+                handleClosePost();
+            }
+          })
+          .catch(error => {
+            dispatch(poststatus(false));
+            dispatch(hasStatus(error));
+            setTimeout(() => {
+                dispatch(hasStatus(null)); 
+            }, 2500);
+          });
+    }
+
+    const handleClosePost = () => {
+        setTitle("");
+        setText("");
+        setImage(null);
+        setFeaturedImage(null);
+        setCategory("Technology");
+        setIsOpen(false);
     }
 
   return ( 
     <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={` relative  duration-300 ease-in-out   p-2 rounded-[10px] mt-5 `}>
+
+        {postStatus && <Status status={postStatus.status} message={postStatus.sms} />}
         
         {/* poster information */}
         <div className="flex items-center gap-2 cursor-pointer ">
@@ -104,7 +141,10 @@ export default function PostBox() {
              </div>
 
             {/* post button */}
-            {isOpen && <button onClick={handlePostSubmit} style={{background:  title || text && featuredImage ? "#4B6BFB" : color.bgprimary , color: title || text && featuredImage ? color.switchtext : color.textprimary}} className=' py-2 px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base leading-6   '  type="button">Post</button>}
+            {isOpen && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' py-2 px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base leading-6 flex items-center gap-2   '  type="button">
+            <span>Post</span>
+            {postingstatus && <WiDaySunny className='text-xl animate-rotate  '/>}
+            </button>}
 
         </div>}
 
