@@ -10,3 +10,8 @@
     --font-work-sans: 'Work Sans', sans-serif;
     --font-inter: 'Inter', sans-serif;
 }
+
+/* common css */
+::-webkit-scrollbar {
+    @apply hidden
+  }

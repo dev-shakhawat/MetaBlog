@@ -14,7 +14,7 @@ export default function Google({ className }) {
       const user = result.user; 
       
       if(user){
-        const response = await fetch('https://blog-backend-production-9410.up.railway.app/auth/continueWithGoogle', {
+        const response = await fetch('http://localhost:3000/auth/continueWithGoogle', {
           method: 'POST',
           credentials: 'include', 
           headers: {
@@ -24,11 +24,16 @@ export default function Google({ className }) {
             name: user.displayName,
             email: user.email,
             password: user.uid,
+            photoURL: user.photoURL
           }),
         });
 
         const data = await response.json()
-        console.log(data);
+        
+        if(data){
+          window.location.reload()
+        }
+        
       }
 
     } catch (error) {
