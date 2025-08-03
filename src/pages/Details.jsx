@@ -31,13 +31,13 @@ export default function Details({}) {
       <Container>
 
         {/* title */}
-        <h2 style={{color: color.textprimary}} className=" font-libertinus-math font-bold text-[40px] leading-10 ">"{post?.title}"</h2>
+        <h2 style={{color: color.textprimary , whiteSpace: 'pre-line' }} className=" font-libertinus-math font-bold text-[40px] leading-10 ">"{post?.title}"</h2>
         
         {/* author information */}
         <div className="flex items-center gap-5 mt-5 py-5   ">
 
           {/* poster pic */}
-          <img src={post?.author?.photoURL} alt="poster" className=' w-9 h-9 rounded-full    ' />
+          <img src={`http://${post?.author?.photoURL}`} alt="poster" className=' w-9 h-9 rounded-full    ' />
 
           {/* poster name */}
           <p style={{color: color.textsecondary}} className=" font-work-sans font-medium text-base leading-6   ">{post?.author?.displayName}</p>
@@ -71,7 +71,7 @@ export default function Details({}) {
 
 
         {/* description */}
-        <p style={{color: color.textsecondary}} className=" font-work-sans font-medium text-sm leading-5 mt-5 line-clamp-3 text-ellipsis     ">{post?.description}</p>
+        <p style={{color: color.textsecondary , whiteSpace: 'pre-line' }} className=" font-work-sans font-medium text-sm leading-5 mt-5  text-ellipsis     ">{post?.description}</p>
 
       </Container>
     </div>
