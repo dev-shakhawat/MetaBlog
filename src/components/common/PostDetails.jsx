@@ -11,7 +11,7 @@ export default function PostDetails({tag , title , posterimage , postername , po
       <p  className="font-work-sans font-medium text-sm leading-5 text-[] capitalize bg-[#4B6BFB]/10 text-[#4B6BFB] py-1 px-2.5 rounded-[5px] w-fit   " >{tag}</p>
       
       {/* title */}
-      <h2 style={{color: color.textprimary}} className="mt-4 font-work-sans font-bold text-[36px] leading-10 line-clamp-3 text-ellipsis     ">{title}</h2>
+      <h2 style={{color: color.textprimary}} className="mt-4 font-work-sans font-bold text-[36px] leading-10 line-clamp-2 text-ellipsis     ">{title}</h2>
 
       {/* poseter information */}
       <div className="flex mt-6 items-center gap-5 ">

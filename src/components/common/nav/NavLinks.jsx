@@ -7,7 +7,6 @@ export default function NavLinks() {
   const allnavs = [
     {name: "Home", ref: "/"},
     {name: "Blogs", ref: "/blogs"},
-    {name: "Single Post", },
     {name: "Contact us", ref: "/contact"},
     {name: "Get start", ref: "/auth"}, 
   ]

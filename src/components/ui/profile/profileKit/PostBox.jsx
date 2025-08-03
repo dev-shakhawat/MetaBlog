@@ -10,10 +10,12 @@ import { WiDaySunny } from "react-icons/wi";
 
 // redux
 import { poststatus , hasStatus } from '../../../../redux/slices/notificationSlice'; 
+import { loadpost } from '../../../../redux/slices/userSlice';
 
 // components
 import PostCategory from './PostCategory';
 import Status from '../../../common/Status';
+import convertTime from '../../../../helpers/timeConverter';
 
 export default function PostBox() {
  
@@ -21,6 +23,7 @@ export default function PostBox() {
     const user = useSelector((state) => state.user.user);
     const postingstatus = useSelector((state) => state.notify.isPosting);
     const postStatus = useSelector((state) => state.notify.status);
+    const postload = useSelector((state) => state.user.postsloaded);
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
@@ -52,7 +55,7 @@ export default function PostBox() {
         formData.append('description', text);
         formData.append('featuredImage', featuredImage);
         formData.append('author', user.id);
-        formData.append('publishedAt',  new Date());
+        formData.append('publishedAt',  convertTime(new Date()));
         formData.append('category',  category);
         
 
@@ -65,6 +68,7 @@ export default function PostBox() {
           .then(data => {
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
+            dispatch(loadpost(!postload));
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);

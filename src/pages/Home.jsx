@@ -3,15 +3,14 @@ import Container from '../components/common/Container'
 
 // components
 import Banner from '../components/ui/banner/Banner'
-import LatestPost from '../components/ui/latestpost/LatestPost'
+import LatestPost from '../components/ui/latestpost/LatestPost'  
 
 export default function Home() {
   return (
     <Container>
 
       {/* banner */}
-      <Banner/>
-
+      <Banner/> 
 
       {/* latest post */}
       <LatestPost/>

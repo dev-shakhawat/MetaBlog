@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Auth from "./pages/Auth";
 import Contact from "./pages/Contact";
+import Details from "./pages/Details";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Layout/>}   >
         <Route index element={<Home/>} />
         <Route path="/blogs" element={<Blogs/>} />
+        <Route path="/blogs/:id" element={<Details/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/auth" element={<Auth/>} />
       </Route>
