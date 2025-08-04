@@ -3,14 +3,21 @@ import Container from "../../common/Container";
 import Banner from "./profileKit/Banner";
 import PostBox from "./profileKit/PostBox";
 import PostedItem from "./profileKit/PostedItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import colorSchema from "../../../colors/colorSchema";
 import NoPost from "../../common/NoPost";
+
+// redux 
+import { addtoSelectedItems } from "../../../redux/slices/postSlice";
+import PostHeader from "./profileKit/PostHeader";
 
 export default function Profile() {
   const color = colorSchema();
   const [allPosts, setAllPosts] = useState([]);
   const postload = useSelector((state) => state.user.postsloaded);
+  const selectedAll = useSelector((state) => state.post.selectall);
+  const selectedItems = useSelector((state) => state.post.seledtedItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("http://localhost:3000/post/getPostbyUser", {
@@ -25,7 +32,13 @@ export default function Profile() {
       .catch((error) => console.log(error));
   }, [postload]);
 
-  console.log(allPosts);
+  useEffect(() => {
+    if (selectedAll) {
+      const updatedSelectedItems = allPosts.map((item) => item._id);  
+      dispatch(addtoSelectedItems(updatedSelectedItems));
+    }
+    
+  }, [selectedAll]);
 
   return (
     <div className="    ">
@@ -37,12 +50,8 @@ export default function Profile() {
         <PostBox />
 
         {/* posted items */}
-        <h2
-          style={{ color: color.textprimary }}
-          className="mt-5 font-work-sans font-bold text-2xl "
-        >
-          Your Posts
-        </h2>
+        <PostHeader/>
+
         {allPosts.length > 0 ? (
           <div className="grid grid-cols-3 gap-3 mt-3    ">
             {allPosts.map((item, index) => (

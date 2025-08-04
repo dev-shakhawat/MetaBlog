@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Container from '../components/common/Container'
 import { useParams } from 'react-router';
 import colorSchema from '../colors/colorSchema';
@@ -14,6 +14,8 @@ export default function Details({}) {
   const { id } = useParams();
   const [post , setPost] = useState({});
   const color = colorSchema();
+  const moreRef = useRef();
+  const [openMore, setOpenMore] = useState(false);
 
   useEffect(() => {
     
@@ -22,7 +24,18 @@ export default function Details({}) {
     .then(data => setPost(data.data))
     .catch(error => console.error(error));
   }, [])
- 
+  
+  useEffect(() => { 
+    const handleClickOutside = (event) => {
+      if (moreRef.current && !moreRef.current.contains(event.target)) {
+        setOpenMore(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
  
 
   return (
@@ -56,18 +69,22 @@ export default function Details({}) {
           {/* comment */}
           <button style={{color: color.textsecondary}} type="button" className='cursor-pointer'><FaRegComment/></button>
 
-          {/* dots */}
-          <button style={{color: color.textsecondary}} type="button" className='cursor-pointer'><TbDots/></button>
 
 
           {/* more */}
-          <More className={`top-7 right-2`}/>
+          <div ref={moreRef} className=" ">
+
+            {/* dots */}
+            <button onClick={() => setOpenMore(prev => !prev)} style={{color: color.textsecondary}} type="button" className='cursor-pointer'><TbDots/></button>
+            
+            {openMore && <More className={`top-7 right-2`} posterId={post?.author?._id} />}
+          </div>
 
         </div>
 
 
         {/* image */}
-        <img src={`http://${post?.featuredImage}`} alt={'image'} className=' w-full  rounded-[5px] object-cover mt-5     ' />
+        <img src={`http://${post?.featuredImage}`} alt={'image'} className=' w-1/2  rounded-[5px] object-cover mt-5     ' />
 
 
         {/* description */}

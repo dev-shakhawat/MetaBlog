@@ -1,0 +1,37 @@
+import React from "react";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+
+// color
+import colorSchema from "../../../../colors/colorSchema";
+import { isSelectedAll } from "../../../../redux/slices/postSlice";
+
+// icons
+import { CiTrash } from "react-icons/ci";
+
+export default function PostHeader() {
+
+    const color = colorSchema();
+    const selectedAll = useSelector((state) => state.post.selectall);
+    const dispatch = useDispatch();
+    const selectedItems = useSelector((state) => state.post.seledtedItems);
+    
+
+    
+
+  return (
+    <div style={{ color: color.textprimary }} className="  mt-5 font-work-sans font-bold text-2xl flex items-center justify-between    "  >
+      <span>Your Posts</span>
+
+      <div className="flex items-center gap-2  ">
+        <button onClick={() => dispatch(isSelectedAll(!selectedAll))} type="button" className=" cursor-pointer selection-none      " >
+           {selectedAll ? "Deselect All" : "Select All"}
+        </button>
+
+        {selectedAll && <button type="button" className="cursor-pointer  px-5 py-1 bg-blue-500 rounded-[5px] selection-none "><CiTrash/></button>}
+      </div>
+
+    </div>
+  );
+}

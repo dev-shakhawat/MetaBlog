@@ -1,5 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router";
+
+
+// layout
 import Layout from "./components/common/Layout";
+
+
+// redux
+import { useDispatch } from "react-redux";
+import { userSet } from "./redux/slices/userSlice";
+
+
+// react
+import { useEffect } from "react";
 
 
 // pages
@@ -11,6 +23,28 @@ import Details from "./pages/Details";
 
 
 function App() {
+
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+
+    async function checkUser (){
+      const response = await fetch('http://localhost:3000/auth/checkUser', {
+        method: 'GET',
+        credentials: 'include', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json()
+      dispatch(userSet(data.user))
+    }
+
+    checkUser();
+    
+  } , [])
+
  
   return (
     <BrowserRouter>
