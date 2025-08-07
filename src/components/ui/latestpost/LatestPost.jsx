@@ -32,12 +32,12 @@ export default function LatestPost() {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mt-10  ">
 
             { allPosts.length > 0 &&  allPosts.map((item, index) => {
-                return <PostCard postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
+                return <PostCard description={item.description} postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
             })}
         </div>
 
         {/* button load */}
-        <div className="flex justify-center md:mt-10 mt-2 ">
+        <div className="flex justify-center md:mt-10 mt-7 ">
             <Link style={{color: color.textprimary}} to={`/blogs`} type="button" className=' py-3 px-5 rounded-[6px] border-2 border-gray-200 font-work-sans font-medium text-base leading-6   ' >View All Post</Link>
         </div>
 
