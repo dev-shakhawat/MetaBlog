@@ -69,8 +69,6 @@ export default function Details({}) {
           {/* comment */}
           <button style={{color: color.textsecondary}} type="button" className='cursor-pointer'><FaRegComment/></button>
 
-
-
           {/* more */}
           <div ref={moreRef} className=" ">
 

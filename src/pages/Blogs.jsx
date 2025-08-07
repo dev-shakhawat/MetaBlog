@@ -22,7 +22,7 @@ export default function Blogs() {
 
 
   return (
-    <div className='pt-30'>
+    <div className='xl:pt-30 lg:pt-20 md:pt-15 sm:pt-10 pt-8   '>
       <Container>
 
         {/* blog banner */}
@@ -30,7 +30,7 @@ export default function Blogs() {
 
 
         {/* all blogs */}
-        <div className="grid grid-cols-3 gap-3 mt-10  ">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mt-10  ">
 
           {allblogs.length > 0 && allblogs.map((item, index) => {
               return  <PostCard postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
