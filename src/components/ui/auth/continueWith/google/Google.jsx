@@ -29,7 +29,6 @@ export default function Google({ className }) {
         });
 
         const data = await response.json()
-        console.log(response);
         
         
         if(data){

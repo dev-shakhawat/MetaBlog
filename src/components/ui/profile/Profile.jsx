@@ -19,7 +19,7 @@ export default function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:3000/post/getPostbyUser", {
+    fetch("https://meta-blog-backend.onrender.com/post/getPostbyUser", {
       method: "GET",
       credentials: "include",
       headers: {
