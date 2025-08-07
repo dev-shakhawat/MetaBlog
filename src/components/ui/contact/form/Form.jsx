@@ -22,7 +22,7 @@ export default function Form() {
   
 
   return ( 
-      <div className=" flex-2  ">
+      <div className=" flex-2 px-2  ">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-5 ">
             <InputField title="name" name={`name`} onChange={handleChange} value={values.name} />

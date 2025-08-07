@@ -7,7 +7,7 @@ import SideContact from '../components/ui/contact/SideContact'
 
 export default function Contact() {
   return (
-    <div className='pt-30    '>
+    <div className='xl:pt-30 lg:pt-20 md:pt-15 sm:pt-10 pt-8    '>
       
       {/* contact banner */}
       {/* <ContactBanner/> */}
@@ -16,7 +16,7 @@ export default function Contact() {
       <ContactHead/>
 
       <Container>
-        <div className="flex items-center gap-25 mt-10   ">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-25 mt-10   ">
           <Form/>
 
           <SideContact/>

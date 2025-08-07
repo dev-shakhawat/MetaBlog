@@ -7,10 +7,10 @@ export default function BlogBanner({tag , title , posterimage , postername , pos
     const color = colorSchema();
 
   return (
-    <div className="relative rounded-[10px]    ">
+    <div className="relative rounded-[10px]      ">
     <img src="/banner.png" alt="banner" className=" w-full  " />
   
-    <div  className={`  rounded-[10px]  absolute -bottom-0 left-16 w-2/5 p-10   `}  >
+    <div  className={`  rounded-[10px]  absolute -bottom-0 left-16 w-2/5 p-10 hidden   `}  >
 
         <p  className="font-work-sans font-medium text-sm leading-5 text-[] capitalize bg-[#4B6BFB] text-[#ffffff] py-1 px-2.5 rounded-[5px] w-fit   " >{tag}</p>
 

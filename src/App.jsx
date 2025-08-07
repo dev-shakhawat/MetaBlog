@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
 
     async function checkUser (){
-      const response = await fetch('https://meta-blog-backend.onrender.com/auth/checkUser', {
+      const response = await fetch(`${import.meta.env.BASE_URL}/auth/checkUser`, {
         method: 'GET',
         credentials: 'include', 
         headers: {

@@ -8,8 +8,7 @@ import { CiTrash } from "react-icons/ci";
 import { CiWarning } from "react-icons/ci";
 
 // redux
-import { useDispatch, useSelector } from 'react-redux';
-import { addtoSelectedItems } from '../../../redux/slices/postSlice';
+import { useDispatch, useSelector } from 'react-redux'; 
 import { useNavigate } from 'react-router';
 import DeletePost from '../../../helpers/deletePost';
 

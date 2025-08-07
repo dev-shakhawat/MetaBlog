@@ -19,7 +19,7 @@ export default function Details({}) {
   
   useEffect(() => {
     
-    fetch(`http://localhost:3000/post/getSinglePost/${id}`)
+    fetch(`${import.meta.env.BASE_URL}/post/getSinglePost/${id}`)
     .then(response => response.json())
     .then(data => setPost(data.data))
     .catch(error => console.error(error));
