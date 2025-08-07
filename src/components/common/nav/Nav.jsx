@@ -9,17 +9,19 @@ import colorSchema from "../../../colors/colorSchema";
 export default function Nav() {
   const color = colorSchema();
   return (
-    <div style={{background: color.bgprimary}} className=" fixed top-0 left-0 w-full z-10 shadow   ">
+    <div style={{background: color.bgprimary}} className=" fixed top-0 left-0 w-full z-10 shadow    ">
       <Container>
         {/* nav */}
-        <div className="flex py-8   ">
+        <div className="flex justify-between xl:py-8 lg:py-6 md:py-4 py-2 px-1   items-center    ">
           {/* logo */}
-          <Logo />
+          <div className="md:flex-1">
+            <Logo />
+          </div>
 
           {/* nav links */}
           <NavLinks />
 
-          <div className="flex-1 flex gap-10 items-center ">
+          <div className="md:flex-1 flex gap-10 items-center ">
             <NavSearch />
             <ThemeSwitcher />
           </div>

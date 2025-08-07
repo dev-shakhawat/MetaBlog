@@ -16,11 +16,11 @@ export default function NavLinks() {
 
 
   return (
-    <div className='flex-2 flex items-center   gap-10  '>
+    <div className='md:flex-2 flex items-center   2xl:gap-10 xl:gap-8 lg:gap-6 md:gap-4 gap-3  '>
        
        {allnavs.map((item, index) => {
         return (
-          <Link style={{color: location.pathname == item.ref ? '#4B6BFB' : color.textprimary}} to={item.ref} className='flex gap-2 items-center font-work-sans font-normal text-base leading-6   ' key={index}  >{item.name}</Link>
+          <Link style={{color: location.pathname == item.ref ? '#4B6BFB' : color.textprimary}} to={item.ref} className=' font-work-sans font-normal text-xs sm:text-sm lg:text-base leading-6   ' key={index}  >{item.name}</Link>
         )
        })}
     </div>
