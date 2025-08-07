@@ -14,7 +14,7 @@ export default function PostCard({tag , title , posterimage , postername , postd
         {blogImage ? <img src={`http://${blogImage}`} alt='blogImage' className='w-full 2xl:h-60 xl:h-50 lg:h-40 md:h-36 sm:h-32 h-28  object-cover rounded-[10px]    ' /> : <div style={{background: color.bgsecondary}} className='w-full h-60 rounded-[10px] '></div>}
 
         {/* post details */}
-        <PostDetails className='mt-6' description={description} tag={tag} title={title} posterimage={posterimage} postername={postername} postdate={postdate} />
+        <PostDetails className='md:mt-6 mt-2' description={description} tag={tag} title={title} posterimage={posterimage} postername={postername} postdate={postdate} />
 
     </div>
   )
