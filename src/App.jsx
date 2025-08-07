@@ -28,9 +28,6 @@ function App() {
 
   useEffect(() => { 
 
-    console.log(import.meta.env.VITE_BASE_URL);
-    
-
     async function checkUser (){
       const response = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/checkUser`, {
         method: 'GET',
@@ -40,7 +37,11 @@ function App() {
         },
       });
 
+      console.log(response);
+      
+
       const data = await response.json()
+
       dispatch(userSet(data.user))
     }
 
