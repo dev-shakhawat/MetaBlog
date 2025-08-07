@@ -12,7 +12,7 @@ export default function Blogs() {
 
   useEffect(() => { 
 
-      fetch('https://meta-blog-backend.onrender.com/getAllPost')
+      fetch('https://meta-blog-backend.onrender.com/post/getAllPost')
       .then(response => response.json())
       .then(data => {
         setAllblogs(data.data)
