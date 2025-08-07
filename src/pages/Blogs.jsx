@@ -33,7 +33,7 @@ export default function Blogs() {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mt-10  ">
 
           {allblogs.length > 0 && allblogs.map((item, index) => {
-              return  <PostCard postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
+              return  <PostCard description={item.description} postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
           })}
 
         </div>
