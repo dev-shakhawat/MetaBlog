@@ -87,7 +87,7 @@ export default function PostedItem({data}) {
 
 
         {/* image */}
-        <img src={`http://${data?.featuredImage}`} alt={'image'} className=' w-full h-60 rounded-[5px] object-cover mt-5     ' />
+        <img src={data?.featuredImage} alt={'image'} className=' w-full h-60 rounded-[5px] object-cover mt-5     ' />
     </div>
   )
 }

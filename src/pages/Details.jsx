@@ -50,7 +50,7 @@ export default function Details({}) {
         <div className="flex items-center gap-5 mt-5 py-5   ">
 
           {/* poster pic */}
-          <img src={`http://${post?.author?.photoURL}`} alt="poster" className=' w-9 h-9 rounded-full    ' />
+          <img src={post?.author?.photoURL} alt="poster" className=' w-9 h-9 rounded-full    ' />
 
           {/* poster name */}
           <p style={{color: color.textsecondary}} className=" font-work-sans font-medium text-base leading-6   ">{post?.author?.displayName}</p>
@@ -82,7 +82,7 @@ export default function Details({}) {
 
 
         {/* image */}
-        <img src={`http://${post?.featuredImage}`} alt={'image'} className=' w-1/2  rounded-[5px] object-cover mt-5     ' />
+        <img src={post?.featuredImage} alt={'image'} className=' w-1/2  rounded-[5px] object-cover mt-5     ' />
 
 
         {/* description */}

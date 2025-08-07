@@ -18,7 +18,7 @@ export default function PostDetails({tag , title , posterimage , postername , po
       <div className="flex   mt-6 items-center gap-5 ">
 
         {/* poster pic */}
-        {posterimage ? <img src={`http://${posterimage}`} alt="poster" className=' w-9 h-9 rounded-full    ' /> : <div style={{background: color.bgsecondary}} className=' w-9 h-9 rounded-full    '></div>}
+        {posterimage ? <img src={posterimage} alt="poster" className=' w-9 h-9 rounded-full    ' /> : <div style={{background: color.bgsecondary}} className=' w-9 h-9 rounded-full    '></div>}
 
         {/* poster name */}
         <p style={{color: color.textsecondary}} className=" font-work-sans  font-medium  leading-6 text-ellipsis overflow-hidden whitespace-nowrap w-[30%] md:w-auto text-xs sm:text-sm md:text-base  ">{postername}</p>

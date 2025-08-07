@@ -101,7 +101,7 @@ export default function PostBox() {
         {/* poster information */}
         <div className="flex items-center gap-2 cursor-pointer ">
             {/* poster pic */}
-            <img src={`http://${user?.photoURL}`} alt="poster" className=' w-9 h-9 rounded-full    ' />
+            <img src={user?.photoURL} alt="poster" className=' w-9 h-9 rounded-full    ' />
 
             {/* poster name */}
             <h2 onClick={() => setIsOpen(true)} style={{color: color.textprimary}} className=" font-work-sans font-semibold text-base flex items-center gap-2 flex-1  ">
