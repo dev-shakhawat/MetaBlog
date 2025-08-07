@@ -14,7 +14,7 @@ export default function Google({ className }) {
       const user = result.user; 
       
       if(user){
-        const response = await fetch('http://localhost:3000/auth/continueWithGoogle', {
+        const response = await fetch('https://meta-blog-backend.onrender.com/auth/continueWithGoogle', {
           method: 'POST',
           credentials: 'include', 
           headers: {
@@ -29,6 +29,8 @@ export default function Google({ className }) {
         });
 
         const data = await response.json()
+        console.log(response);
+        
         
         if(data){
           window.location.reload()
@@ -37,7 +39,7 @@ export default function Google({ className }) {
       }
 
     } catch (error) {
-      console.error( error.message);
+      console.log( error.message);
     }
   };
 

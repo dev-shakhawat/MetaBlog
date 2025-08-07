@@ -16,7 +16,7 @@ export default function Details({}) {
   const color = colorSchema();
   const moreRef = useRef();
   const [openMore, setOpenMore] = useState(false);
-
+  
   useEffect(() => {
     
     fetch(`http://localhost:3000/post/getSinglePost/${id}`)
@@ -77,7 +77,7 @@ export default function Details({}) {
             {/* dots */}
             <button onClick={() => setOpenMore(prev => !prev)} style={{color: color.textsecondary}} type="button" className='cursor-pointer'><TbDots/></button>
             
-            {openMore && <More className={`top-7 right-2`} posterId={post?.author?._id} />}
+            {openMore && <More className={`top-7 right-2`} posterId={post?.author?._id} postID={post?._id} />}
           </div>
 
         </div>

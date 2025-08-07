@@ -10,16 +10,18 @@ import { isSelectedAll } from "../../../../redux/slices/postSlice";
 // icons
 import { CiTrash } from "react-icons/ci";
 
+// finction 
+import DeletePost from "../../../../helpers/deletePost";
+
 export default function PostHeader() {
 
     const color = colorSchema();
     const selectedAll = useSelector((state) => state.post.selectall);
     const dispatch = useDispatch();
     const selectedItems = useSelector((state) => state.post.seledtedItems);
+     
     
-
     
-
   return (
     <div style={{ color: color.textprimary }} className="  mt-5 font-work-sans font-bold text-2xl flex items-center justify-between    "  >
       <span>Your Posts</span>
@@ -29,7 +31,7 @@ export default function PostHeader() {
            {selectedAll ? "Deselect All" : "Select All"}
         </button>
 
-        {selectedAll && <button type="button" className="cursor-pointer  px-5 py-1 bg-blue-500 rounded-[5px] selection-none "><CiTrash/></button>}
+        {selectedAll && <button onClick={()=> DeletePost(selectedItems , dispatch )}  type="button" className="cursor-pointer  px-5 py-1 bg-blue-500 rounded-[5px] selection-none "><CiTrash/></button>}
       </div>
 
     </div>

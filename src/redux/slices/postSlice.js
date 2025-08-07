@@ -4,7 +4,8 @@ export const postSlice = createSlice({
   name: 'post',
   initialState: {
     selectall: false,
-    seledtedItems: []
+    seledtedItems: [],
+    postsloaded : false
   },
   reducers: { 
     isSelectedAll: (state , action) => {
@@ -12,11 +13,14 @@ export const postSlice = createSlice({
     },
     addtoSelectedItems: (state , action) => {
       state.seledtedItems = action.payload
+    },
+    loadpost: (state) => {
+      state.postsloaded = !state.postsloaded
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const {  isSelectedAll , addtoSelectedItems } = postSlice.actions
+export const {  isSelectedAll , addtoSelectedItems , loadpost } = postSlice.actions
 
 export default postSlice.reducer

@@ -10,7 +10,7 @@ import { WiDaySunny } from "react-icons/wi";
 
 // redux
 import { poststatus , hasStatus } from '../../../../redux/slices/notificationSlice'; 
-import { loadpost } from '../../../../redux/slices/userSlice';
+import { loadpost } from '../../../../redux/slices/postSlice';
 
 // components
 import PostCategory from './PostCategory';
@@ -23,7 +23,6 @@ export default function PostBox() {
     const user = useSelector((state) => state.user.user);
     const postingstatus = useSelector((state) => state.notify.isPosting);
     const postStatus = useSelector((state) => state.notify.status);
-    const postload = useSelector((state) => state.user.postsloaded);
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
@@ -59,7 +58,7 @@ export default function PostBox() {
         formData.append('category',  category);
         
 
-        fetch('http://localhost:3000/post/addPost', {
+        fetch('https://meta-blog-backend.onrender.com/post/addPost', {
             method: 'POST', 
             credentials: 'include',
             body: formData
@@ -68,7 +67,7 @@ export default function PostBox() {
           .then(data => {
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
-            dispatch(loadpost(!postload));
+            dispatch(loadpost());
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);
@@ -112,7 +111,7 @@ export default function PostBox() {
             </h2>
 
             {/* post box close button */}
-            {isOpen && <button onClick={() => setIsOpen(false)} type='button' style={{color: color.textprimary}} className='  cursor-pointer  text-3xl  '  ><IoCloseOutline/></button>}
+            {isOpen && <button onClick={handleClosePost} type='button' style={{color: color.textprimary}} className='  cursor-pointer  text-3xl  '  ><IoCloseOutline/></button>}
         </div>
 
         {/* post box text */}

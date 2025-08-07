@@ -10,7 +10,7 @@ export default function LatestPost() {
 
     useEffect(() => { 
 
-        fetch('http://localhost:3000/post/getAllPost')
+        fetch('https://meta-blog-backend.onrender.com/post/getAllPost')
         .then(response => response.json())
         .then(data => {
             setAllPosts(data.data)

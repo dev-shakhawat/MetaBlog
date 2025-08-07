@@ -1,4 +1,6 @@
-async function DeletePost(postIDs){
+import { loadpost } from "../redux/slices/postSlice";
+
+async function DeletePost(postIDs , dispatch){
     
     await fetch(`http://localhost:3000/post/deletePost`, {
       method: 'DELETE',
@@ -7,10 +9,12 @@ async function DeletePost(postIDs){
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-         postIDs: postIDs
+         postIDs
       }),
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data =>  dispatch(loadpost()))
     .catch(error => console.error(error));
 }
+
+export default DeletePost

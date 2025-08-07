@@ -14,9 +14,8 @@ import PostHeader from "./profileKit/PostHeader";
 export default function Profile() {
   const color = colorSchema();
   const [allPosts, setAllPosts] = useState([]);
-  const postload = useSelector((state) => state.user.postsloaded);
+  const postload = useSelector((state) => state.post.postsloaded);
   const selectedAll = useSelector((state) => state.post.selectall);
-  const selectedItems = useSelector((state) => state.post.seledtedItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
