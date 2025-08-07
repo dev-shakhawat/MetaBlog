@@ -19,7 +19,7 @@ export default function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}/post/getPostbyUser`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/post/getPostbyUser`, {
       method: "GET",
       credentials: "include",
       headers: {

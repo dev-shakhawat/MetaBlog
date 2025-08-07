@@ -19,7 +19,7 @@ export default function Details({}) {
   
   useEffect(() => {
     
-    fetch(`${import.meta.env.BASE_URL}/post/getSinglePost/${id}`)
+    fetch(`${import.meta.env.VITE_BASE_URL}/post/getSinglePost/${id}`)
     .then(response => response.json())
     .then(data => setPost(data.data))
     .catch(error => console.error(error));

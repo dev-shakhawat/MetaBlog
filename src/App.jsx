@@ -26,10 +26,13 @@ function App() {
 
   const dispatch = useDispatch(); 
 
-  useEffect(() => {
+  useEffect(() => { 
+
+    console.log(import.meta.env.VITE_BASE_URL);
+    
 
     async function checkUser (){
-      const response = await fetch(`${import.meta.env.BASE_URL}/auth/checkUser`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/checkUser`, {
         method: 'GET',
         credentials: 'include', 
         headers: {

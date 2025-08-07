@@ -18,7 +18,7 @@ export default function Signup() {
       validationSchema: signupValuesSchema,
       onSubmit: async (values) => {
         
-        await fetch(`${import.meta.env.BASE_URL}/auth/signup`, {
+        await fetch(`${import.meta.env.VITE_BASE_URL}/auth/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

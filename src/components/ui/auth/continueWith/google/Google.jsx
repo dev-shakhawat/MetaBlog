@@ -14,7 +14,7 @@ export default function Google({ className }) {
       const user = result.user; 
       
       if(user){
-        const response = await fetch(`${import.meta.env.BASE_URL}/auth/continueWithGoogle`, {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/continueWithGoogle`, {
           method: 'POST',
           credentials: 'include', 
           headers: {

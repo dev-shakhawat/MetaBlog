@@ -58,7 +58,7 @@ export default function PostBox() {
         formData.append('category',  category);
         
 
-        fetch(`${import.meta.env.BASE_URL}/post/addPost`, {
+        fetch(`${import.meta.env.VITE_BASE_URL}/post/addPost`, {
             method: 'POST', 
             credentials: 'include',
             body: formData
