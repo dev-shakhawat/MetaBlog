@@ -11,7 +11,7 @@ export default function Footer() {
     const color = colorSchema();
 
   return (
-    <div style={{background: color.bgprimary}} className=" mt-25 pt-16 px-1   ">
+    <div style={{background: color.bgprimary}} className=" xl:mt-25 lg:mt-20 md:mt-15 sm:mt-10 mt-5 pt-16 px-1   ">
       <Container>
         <div className="flex lg:flex-nowrap flex-wrap   ">
             {/* about */}
