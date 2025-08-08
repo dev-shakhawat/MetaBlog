@@ -20,7 +20,7 @@ export default function Auth() {
  
 
   return (
-    <div className="pt-30    ">
+    <div className="2xl:pt-30 xl:pt-25 lg:pt-20 md:pt-18 sm:pt-15 pt-13    ">
     {userval ? 
       <Profile/>
       : 

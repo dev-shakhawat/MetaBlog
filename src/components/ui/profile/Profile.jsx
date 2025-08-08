@@ -40,7 +40,7 @@ export default function Profile() {
   }, [selectedAll]);
 
   return (
-    <div className="    ">
+    <div className=" px-2   ">
       <Container>
         {/* banner */}
         <Banner />
@@ -49,10 +49,10 @@ export default function Profile() {
         <PostBox />
 
         {/* posted items */}
-        <PostHeader/>
+        <PostHeader isSelection={allPosts.length > 0 ? true : false} />
 
         {allPosts.length > 0 ? (
-          <div className="grid grid-cols-3 gap-3 mt-3    ">
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 mt-3    ">
             {allPosts.map((item, index) => (
               <PostedItem key={index} data={item} />
             ))}

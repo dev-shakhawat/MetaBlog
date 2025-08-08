@@ -25,11 +25,11 @@ export default function Form() {
       <div className=" flex-2 px-2  ">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-5 ">
-            <InputField title="name" name={`name`} onChange={handleChange} value={values.name} />
-            <InputField title="email" name={`email`} onChange={handleChange} value={values.email} />
+            <InputField title="Name" name={`name`} onChange={handleChange} value={values.name} />
+            <InputField title="Email" name={`email`} onChange={handleChange} value={values.email} />
           </div>
 
-          <InputField title="subject" name={`subject`} onChange={handleChange} value={values.subject} className={"mt-2"} />
+          <InputField title="Subject" name={`subject`} onChange={handleChange} value={values.subject} className={"mt-2"} />
 
           <textarea   placeholder="Your message" style={{background: color.bgsecondary , color: color.textprimary}} name="message" onChange={handleChange} value={values.message} className="mt-5 w-full py-3 px-4 rounded-[6px]  border border-gray-100/20 outline-0    " id=""></textarea>
           

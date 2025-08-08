@@ -39,15 +39,15 @@ export default function Details({}) {
  
 
   return (
-    <div className='pt-35     '>
+    <div className='2xl:pt-35 xl:pt-30 lg:pt-25 md:pt-20 sm:pt-15 pt-13 px-1     '>
       
       <Container>
 
         {/* title */}
-        <h2 style={{color: color.textprimary , whiteSpace: 'pre-line' }} className=" font-libertinus-math font-bold text-[40px] leading-10 ">"{post?.title}"</h2>
+        <h2 style={{color: color.textprimary , whiteSpace: 'pre-line' }} className=" font-libertinus-math font-bold md:text-[40px] text-3xl leading-10 ">"{post?.title}"</h2>
         
         {/* author information */}
-        <div className="flex items-center gap-5 mt-5 py-5   ">
+        <div className="flex items-center gap-5 xl:mt-5 lg:mt-4 md:mt-3 sm:mt-2 mt-1 py-5   ">
 
           {/* poster pic */}
           <img src={post?.author?.photoURL} alt="poster" className=' w-9 h-9 rounded-full    ' />
@@ -82,7 +82,7 @@ export default function Details({}) {
 
 
         {/* image */}
-        <img src={post?.featuredImage} alt={'image'} className=' w-1/2  rounded-[5px] object-cover mt-5     ' />
+        <img src={post?.featuredImage} alt={'image'} className=' md:w-1/2 h-60 sm:h-80 md:h-100 lg:h-120 w-full  rounded-[5px] object-cover mt-5     ' />
 
 
         {/* description */}

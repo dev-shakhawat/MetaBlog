@@ -94,7 +94,7 @@ export default function PostBox() {
     }
 
   return ( 
-    <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={` relative  duration-300 ease-in-out   p-2 rounded-[10px] mt-5 `}>
+    <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={` relative  duration-300 ease-in-out   md:p-2 p-1 rounded-[5px] md:rounded-[10px] mt-5 `}>
 
         {postStatus && <Status status={postStatus.status} message={postStatus.sms} />}
         
@@ -104,10 +104,10 @@ export default function PostBox() {
             <img src={user?.photoURL} alt="poster" className=' w-9 h-9 rounded-full    ' />
 
             {/* poster name */}
-            <h2 onClick={() => setIsOpen(true)} style={{color: color.textprimary}} className=" font-work-sans font-semibold text-base flex items-center gap-2 flex-1  ">
-                {!isOpen && <span>hey,</span>}
-                <span>{user?.name}</span>
-                {!isOpen && <span>Post about something...</span>}
+            <h2 onClick={() => setIsOpen(true)} style={{color: color.textprimary}} className=" font-work-sans font-semibold lg:text-base md:text-sm text-xs flex items-center gap-2 flex-1  ">
+                {!isOpen && <span className='hidden md:inline-block '>hey,</span>}
+                <span className='hidden md:inline-block    '>{user?.name}</span>
+                {!isOpen && <span className=' w-[70%] md:w-auto whitespace-nowrap text-ellipsis overflow-hidden '>Post about something...</span>}
             </h2>
 
             {/* post box close button */}
