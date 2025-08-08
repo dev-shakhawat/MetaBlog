@@ -12,7 +12,7 @@ export default function Status({status , message }) {
   const color = colorSchema();
 
   return (
-    <div className={`border border-gray-100/50 rounded-[10px] w-1/4 fixed top-1/2 left-1/2 -translate-1/2 p-2 ${status === true ? 'bg-green-500/30 text-white' : 'bg-red-500/30 text-white'}    `}>
+    <div className={`border border-gray-100/50 rounded-[10px] md:w-1/4 w-3/4 fixed top-1/2 left-1/2 -translate-1/2 p-2 ${status === true ? 'bg-green-500/30 text-white' : 'bg-red-500/30 text-white'}    `}>
         
         {/* icons */}
         <button style={{color: color.textprimary}} type="button" className=' w-full text-center flex   items-center justify-center gap-0'>

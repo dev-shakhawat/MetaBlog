@@ -73,13 +73,13 @@ export default function PostedItem({data}) {
         </div>
 
         {/* title */}
-        <h2 style={{color: color.textprimary}} className=" font-work-sans font-semibold text-lg leading-6 mt-3 line-clamp-2 text-ellipsis flex items-center      ">
+        <h2 style={{color: color.textprimary}} className=" font-work-sans font-semibold text-lg leading-6 mt-3   flex items-center      ">
           {selectedAll && <button onClick={(e) => handleRemoveFromSelectedItems(e , data?._id)} type="button" className='mr-2'>
 
             {selectedItems.filter((item) => item === data?._id).length > 0 ? <GoCheckCircle className='text-[22px]'/> : <GoCircle className='text-[22px]'/>}
             
           </button>}
-          <span>{data?.title}</span>
+          <span className='text-ellipsis  line-clamp-2'>{data?.title}</span>
         </h2>
 
         {/* description */}

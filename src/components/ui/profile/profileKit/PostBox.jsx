@@ -121,21 +121,21 @@ export default function PostBox() {
 
 
         {/* description */}
-        {isOpen && <textarea  value={text} onChange={(e) => setText(e.target.value)} style={{color: color.textprimary}} placeholder='Description...' className=' w-full h-[150px] resize-none outline-0 mt-2 text-sm    ' />}
+        {isOpen && <textarea  value={text} onChange={(e) => setText(e.target.value)} style={{color: color.textprimary}} placeholder='Description...' className=' w-full xl:h-[150px] lg:h-25 md:h-20 sm:h-16 h-12 resize-none outline-0 mt-2 text-sm    ' />}
 
 
         {/* image */}
-        {isOpen && image &&  <img src={image} alt="image" className=' w-full resize-none outline-0 md:w-[400px] h-[200px] object-cover     ' />}
+        {isOpen && image &&  <img src={image} alt="image" className=' w-full resize-none outline-0 md:w-[400px] xl:h-[200px] lg:h-35 md:h-30 sm:h-27 h-25 object-cover     ' />}
 
         {/* add image and post */}
         {isOpen && <div className="flex justify-between mt-2">
              
-             <div className="flex items-center gap-5 ">
+             <div className="flex items-center lg:gap-5 md:gap-4 sm:gap-3 gap-2 ">
 
                 {/* add image */}
-                {isOpen && <div className='w-fit cursor-pointer relative'>
+                {isOpen && <div className='w-fit h-7.5 cursor-pointer relative'>
                     <button type="button" className='text-3xl  text-[#1DA1F2]   '><HiPhoto/></button>
-                    <input onChange={(e) => setImageUrl(e.target.files[0])} type="file" className=' w-full h-full resize-none outline-0 absolute top-0 left-0 opacity-0    ' />
+                    <input onChange={(e) => setImageUrl(e.target.files[0])} type="file" className='  w-full h-full resize-none outline-0 absolute top-0 left-0 opacity-0    ' />
                 </div>}
 
                 {/* add category */}
@@ -144,7 +144,7 @@ export default function PostBox() {
              </div>
 
             {/* post button */}
-            {isOpen && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' py-2 px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base leading-6 flex items-center gap-2   '  type="button">
+            {isOpen && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
             <span>Post</span>
             {postingstatus && <WiDaySunny className='text-xl animate-rotate  '/>}
             </button>}

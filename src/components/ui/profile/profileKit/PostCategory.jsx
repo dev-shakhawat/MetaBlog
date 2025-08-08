@@ -76,11 +76,11 @@ export default function PostCategory({setCategory }) {
   return (
     <div ref={catagoryRef} className='relative'>
         
-        <div onClick={() => setIsOpenCategory(prev => !prev)} style={{background:   color.bgprimary}} className='flex gap-2 w-fit py-1 px-5 rounded-[6px] cursor-pointer    font-work-sans font-medium text-base leading-6     '>
+        <div onClick={() => setIsOpenCategory(prev => !prev)} style={{background:   color.bgprimary}} className='flex items-center gap-2 w-fit py-1 px-5 rounded-[6px] cursor-pointer    font-work-sans font-medium text-base leading-6     '>
 
-            <p style={{color: color.textprimary}} className="">Category:</p>
+            <p style={{color: color.textprimary}} className="text-xs sm:text-sm md:text-base">Category:</p>
 
-            <input  style={{color: color.textprimary}} type="text" value={selectedCategory }  className='outline-0 w-fit cursor-pointer '  readOnly />
+            <input  style={{color: color.textprimary}} type="text" value={selectedCategory }  className='outline-0 md:w-fit w-15 cursor-pointer text-xs sm:text-sm md:text-base   '  readOnly />
 
         </div>
 

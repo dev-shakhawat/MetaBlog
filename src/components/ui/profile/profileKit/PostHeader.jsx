@@ -23,7 +23,7 @@ export default function PostHeader({isSelection = false}) {
     
     
   return (
-    <div style={{ color: color.textprimary }} className="  mt-5 font-work-sans font-bold text-2xl flex items-center justify-between    "  >
+    <div style={{ color: color.textprimary }} className="  mt-5 font-work-sans font-bold 2xl:text-2xl xl:text-xl lg:text-lg md:text-base text-sm flex items-center justify-between    "  >
       <span>Your Posts</span>
 
 {  isSelection &&    <div className="flex items-center gap-2  ">
