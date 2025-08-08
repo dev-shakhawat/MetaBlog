@@ -9,7 +9,7 @@ export default function ForgetPass() {
   return (
     <div>
         
-        {isotpdone ? <ResetPass/> : <GetOtp/>}
+        {isotpdone ? <ResetPass/> : <GetOtp setIsotpdone={setIsotpdone}/>}
 
     </div>
   )

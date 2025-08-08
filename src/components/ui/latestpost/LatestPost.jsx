@@ -22,7 +22,7 @@ export default function LatestPost() {
  
 
   return (
-    <div className=' xl:pt-40 lg:pt-30 md:pt-20 sm:pt-15 pt-5   '>
+    <div className=' xl:pt-40 lg:pt-30 md:pt-20 sm:pt-15 pt-5 px-2   '>
         
         <h2 style={{color: color.textprimary}}  className='font-work-sans font-bold text-[24px] leading-7   '>Latest Post</h2>
 
