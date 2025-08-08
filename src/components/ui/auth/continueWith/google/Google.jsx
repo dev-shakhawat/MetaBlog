@@ -32,7 +32,11 @@ export default function Google({ className }) {
         
         
         if(data){
-          window.location.reload()
+          console.log(document.cookie)
+          
+          setTimeout(() => {
+            window.location.reload()
+          }, 3000);
         }
         
       }
