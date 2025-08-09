@@ -78,7 +78,7 @@ export default function PostBox() {
           })
           .catch(error => {
             dispatch(poststatus(false));
-            dispatch(hasStatus({ status: false, sms: err.message }));
+            dispatch(hasStatus({ status: false, sms: error.message }));
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);
