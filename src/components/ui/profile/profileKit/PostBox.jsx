@@ -65,6 +65,8 @@ export default function PostBox() {
           })
           .then(response => response.json())
           .then(data => {
+            console.log(data);
+            
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
             dispatch(loadpost());
@@ -76,6 +78,7 @@ export default function PostBox() {
             }
           })
           .catch(error => {
+            console.log(error);
             dispatch(poststatus(false));
             dispatch(hasStatus(error));
             setTimeout(() => {
