@@ -49,7 +49,7 @@ export default function PostBox() {
 
         dispatch(poststatus(true));
 
-        const formData = new FormData();
+        const formDatas = new FormData();
         formData.append('title', title);
         formData.append('description', text);
         formData.append('featuredImage', featuredImage);
@@ -61,7 +61,7 @@ export default function PostBox() {
         fetch(`${import.meta.env.VITE_BASE_URL}/post/addPost`, {
             method: 'POST', 
             credentials: 'include',
-            body: formData, 
+            body: formDatas, 
           })
           .then(response => {
             console.log("response line 67" , response);
