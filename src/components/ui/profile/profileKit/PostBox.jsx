@@ -61,11 +61,15 @@ export default function PostBox() {
         fetch(`${import.meta.env.VITE_BASE_URL}/post/addPost`, {
             method: 'POST', 
             credentials: 'include',
-            body: formData
+            body: formData, 
           })
-          .then(response => response.json())
+          .then(response => {
+            console.log("response line 67" , response);
+            response.json()
+            
+          })
           .then(data => {
-            console.log(data);
+            console.log("data line 72",data);
             
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
@@ -78,7 +82,7 @@ export default function PostBox() {
             }
           })
           .catch(error => {
-            console.log(error);
+            console.log("error line 85" , error);
             dispatch(poststatus(false));
             dispatch(hasStatus(error));
             setTimeout(() => {
