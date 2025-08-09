@@ -6,7 +6,8 @@ import { Link } from 'react-router'
 export default function LatestPost() {
 
     const color = colorSchema()
-    const [allPosts, setAllPosts] = useState([]);
+    const [allPosts, setAllPosts] = useState([]); 
+    
 
     useEffect(() => { 
 
