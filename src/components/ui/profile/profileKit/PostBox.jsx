@@ -63,13 +63,8 @@ export default function PostBox() {
             credentials: 'include',
             body: formDatas, 
           })
-          .then(response => {
-            console.log("response line 67" , response);
-            response.json()
-            
-          })
-          .then(data => {
-            console.log("data line 72",data);
+          .then(response => response.json())
+          .then(data => { 
             
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
@@ -82,9 +77,8 @@ export default function PostBox() {
             }
           })
           .catch(error => {
-            console.log("error line 85" , error);
             dispatch(poststatus(false));
-            dispatch(hasStatus(error));
+            dispatch(hasStatus({ status: false, sms: err.message }));
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);
