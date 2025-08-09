@@ -16,6 +16,7 @@ import { loadpost } from '../../../../redux/slices/postSlice';
 import PostCategory from './PostCategory';
 import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
+import axios from 'axios';
 
 export default function PostBox() {
  
@@ -45,45 +46,62 @@ export default function PostBox() {
         }
     }
     
-    const handlePostSubmit = () => {
-
+    const handlePostSubmit = async () => {
         dispatch(poststatus(true));
-
-        const formDatas = new FormData();
-        formDatas.append('title', title);
-        formDatas.append('description', text);
-        formDatas.append('featuredImage', featuredImage);
-        formDatas.append('author', user.id);
-        formDatas.append('publishedAt',  convertTime(new Date()));
-        formDatas.append('category',  category);
         
-
-        fetch(`${import.meta.env.VITE_BASE_URL}/post/addPost`, {
-            method: 'POST', 
-            credentials: 'include',
-            body: formDatas, 
-          })
-          .then(response => response.json())
-          .then(data => { 
+        try {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', text);
+            formData.append('featuredImage', featuredImage);
+            formData.append('author', user.id);
+            formData.append('publishedAt', convertTime(new Date()));
+            formData.append('category', category);
+            
+            const response = await axios.post(
+                `${import.meta.env.VITE_BASE_URL}/post/addPost`, 
+                formData,
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            );
+    
+            const data = response.data;
+            console.log(response);
+            console.log(data);
             
             dispatch(poststatus(false));
             dispatch(hasStatus(data));
             dispatch(loadpost());
+            
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);
-            if(data.status === true){ 
+            
+            if(data.status === true) {
                 handleClosePost();
             }
-          })
-          .catch(error => {
+        } catch (error) {
+            console.error('Post submission error:', error);
             dispatch(poststatus(false));
-            dispatch(hasStatus({ status: false, sms: error.message }));
+            
+            const errorMessage = error.response?.data?.sms || 
+                               error.message || 
+                               'পোস্ট সাবমিট করতে সমস্যা হয়েছে';
+            
+            dispatch(hasStatus({ 
+                status: false, 
+                sms: errorMessage 
+            }));
+            
             setTimeout(() => {
                 dispatch(hasStatus(null)); 
             }, 2500);
-          });
-    }
+        }
+    };
 
     const handleClosePost = () => {
         setTitle("");
