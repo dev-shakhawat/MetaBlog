@@ -32,7 +32,7 @@ export default function LatestPost() {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mt-10  ">
 
             { allPosts.length > 0 &&  allPosts.map((item, index) => {
-                return <PostCard description={item.description} postId={item.slug} key={index} postername={item.author.displayName} postdate={item.publishedAt} tag={item.category} title={item.title}    blogImage={item.featuredImage} posterimage={item.author.photoURL}    />
+                return <PostCard description={item?.description} postId={item?.slug} key={index} postername={item?.author?.displayName} postdate={item?.publishedAt} tag={item?.category} title={item?.title}    blogImage={item?.featuredImage} posterimage={item?.author?.photoURL}    />
             })}
         </div>
 
