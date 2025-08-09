@@ -50,12 +50,12 @@ export default function PostBox() {
         dispatch(poststatus(true));
 
         const formDatas = new FormData();
-        formData.append('title', title);
-        formData.append('description', text);
-        formData.append('featuredImage', featuredImage);
-        formData.append('author', user.id);
-        formData.append('publishedAt',  convertTime(new Date()));
-        formData.append('category',  category);
+        formDatas.append('title', title);
+        formDatas.append('description', text);
+        formDatas.append('featuredImage', featuredImage);
+        formDatas.append('author', user.id);
+        formDatas.append('publishedAt',  convertTime(new Date()));
+        formDatas.append('category',  category);
         
 
         fetch(`${import.meta.env.VITE_BASE_URL}/post/addPost`, {
