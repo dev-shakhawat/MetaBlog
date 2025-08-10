@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import colorSchema from '../../../../colors/colorSchema'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,7 +18,7 @@ import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
 import axios from 'axios';
 
-export default function PostBox({className = "relative" , open , closeFunction}) {
+export default function PostBox({className = "relative" , open , closeFunction , fetchData}) {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
@@ -33,6 +33,25 @@ export default function PostBox({className = "relative" , open , closeFunction})
     const [category, setCategory] = useState('Technology');
     const dispatch = useDispatch();
     
+
+    useEffect(() => { 
+        if(fetchData){
+            (async function() {
+                const data = await axios.get(`${import.meta.env.VITE_BASE_URL}/post/getPostbyID/:${isEdit.id}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+
+                const post = data.data.post; 
+
+                console.log(post);
+                
+
+            })();
+        }
+    }, []);
     
     
     
