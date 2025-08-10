@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // icons
 import { IoCloseOutline } from "react-icons/io5";
 import { HiPhoto } from "react-icons/hi2";
-import { WiDaySunny } from "react-icons/wi";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 // redux
@@ -31,6 +31,7 @@ export default function PostBox() {
     const [featuredImage , setFeaturedImage] = useState(null);
     const [category, setCategory] = useState('Technology');
     const dispatch = useDispatch();
+    const [isEdit, setIsEdit] = useState(false);
     
     
     
@@ -162,10 +163,15 @@ export default function PostBox() {
  
              </div>
 
-            {/* post button */}
-            {isOpen && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
-            <span>Post</span>
-            {postingstatus && <WiDaySunny className='text-xl animate-rotate  '/>}
+            {/* upload button */}
+            {isOpen && isEdit ? <button style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+              <span>Update</span>
+              {postingstatus && <AiOutlineLoading3Quarters className='text-xl animate-rotate  '/>}
+            </button>: 
+
+            <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+              <span>Post</span>
+              {postingstatus && <AiOutlineLoading3Quarters className='text-xl animate-rotate  '/>}
             </button>}
 
         </div>}
