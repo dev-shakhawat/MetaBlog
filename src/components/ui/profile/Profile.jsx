@@ -17,6 +17,7 @@ export default function Profile() {
   const postload = useSelector((state) => state.post.postsloaded);
   const selectedAll = useSelector((state) => state.post.selectall);
   const dispatch = useDispatch();
+  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BASE_URL}/post/getPostbyUser`, {
@@ -46,7 +47,7 @@ export default function Profile() {
         <Banner />
 
         {/* post box */}
-        <PostBox />
+        <PostBox isEdit={isEdit} />
 
         {/* posted items */}
         <PostHeader isSelection={allPosts.length > 0 ? true : false} />
@@ -54,7 +55,7 @@ export default function Profile() {
         {allPosts.length > 0 ? (
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 mt-3    ">
             {allPosts.map((item, index) => (
-              <PostedItem key={index} data={item} />
+              <PostedItem setIsEdit={setIsEdit} key={index} data={item} />
             ))}
           </div>
         ) : (

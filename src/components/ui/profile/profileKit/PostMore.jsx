@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 
 
 
-export default function PostMore({postID , setIsopenpostmore}) {
+export default function PostMore({postID , setIsopenpostmore , setIsEdit}) {
 
     const color = colorSchema();
     const dispatch = useDispatch();
@@ -23,6 +23,10 @@ export default function PostMore({postID , setIsopenpostmore}) {
         DeletePost( [postID] , dispatch )
         setIsopenpostmore(false);
     }
+
+    const handleEdit = () => { 
+        setIsEdit(true);
+    }
     
 
   return (
@@ -31,7 +35,7 @@ export default function PostMore({postID , setIsopenpostmore}) {
             <LiaShareSolid/>
             <span>Share</span>
         </button>
-        <button type="button" className='flex items-center gap-2 py-1 px-2 cursor-pointer    ' >
+        <button onClick={handleEdit} type="button" className='flex items-center gap-2 py-1 px-2 cursor-pointer    ' >
             <CiEdit/>
             <span>Edit</span>
         </button>

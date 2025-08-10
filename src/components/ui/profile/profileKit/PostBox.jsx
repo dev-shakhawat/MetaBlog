@@ -18,7 +18,7 @@ import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
 import axios from 'axios';
 
-export default function PostBox() {
+export default function PostBox({isEdit}) {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
@@ -31,7 +31,7 @@ export default function PostBox() {
     const [featuredImage , setFeaturedImage] = useState(null);
     const [category, setCategory] = useState('Technology');
     const dispatch = useDispatch();
-    const [isEdit, setIsEdit] = useState(false);
+    
     
     
     
@@ -160,7 +160,6 @@ export default function PostBox() {
 
                 {/* add category */}
                 <PostCategory setCategory={setCategory}   />
- 
              </div>
 
             {/* upload button */}
@@ -175,9 +174,6 @@ export default function PostBox() {
             </button>}
 
         </div>}
-
-
-
 
     </div>
   )
