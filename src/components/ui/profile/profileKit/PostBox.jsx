@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import colorSchema from '../../../../colors/colorSchema'
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 // icons
 import { IoCloseOutline } from "react-icons/io5";
@@ -16,7 +17,10 @@ import { loadpost } from '../../../../redux/slices/postSlice';
 import PostCategory from './PostCategory';
 import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
-import axios from 'axios';
+
+
+// functions
+import editPost from '../../../../helpers/editPost';
 
 export default function PostBox({className = "relative" , open , closeFunction , fetchData}) {
  
@@ -31,8 +35,8 @@ export default function PostBox({className = "relative" , open , closeFunction ,
     const [image, setImage] = useState(null);
     const [featuredImage , setFeaturedImage] = useState(null);
     const [category, setCategory] = useState('Technology');
+    const [prevImage , setPrevImage] = useState("");
     const dispatch = useDispatch();
-
     
 
     useEffect(() => { 
@@ -51,8 +55,8 @@ export default function PostBox({className = "relative" , open , closeFunction ,
                 setText(post.description);
                 setImage(post.featuredImage);
                 setCategory(post.category);
+                setPrevImage(post.featuredImage);
                 
-
             })();
         }
     }, []);
@@ -187,7 +191,7 @@ export default function PostBox({className = "relative" , open , closeFunction ,
 
             {/* upload button */}
              {isEdit.status &&
-            <button style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+            <button onClick={()=>editPost(isEdit.id , title , text , featuredImage , category , prevImage , dispatch )} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Update</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
             </button>} 
