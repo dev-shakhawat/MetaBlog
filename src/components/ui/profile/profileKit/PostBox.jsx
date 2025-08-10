@@ -32,6 +32,7 @@ export default function PostBox({className = "relative" , open , closeFunction ,
     const [featuredImage , setFeaturedImage] = useState(null);
     const [category, setCategory] = useState('Technology');
     const dispatch = useDispatch();
+
     
 
     useEffect(() => { 
@@ -46,7 +47,10 @@ export default function PostBox({className = "relative" , open , closeFunction ,
 
                 const post = data.data.post; 
 
-                console.log(post);
+                setTitle(post.title);
+                setText(post.description);
+                setImage(post.featuredImage);
+                setCategory(post.category);
                 
 
             })();
@@ -178,7 +182,7 @@ export default function PostBox({className = "relative" , open , closeFunction ,
                 </div>}
 
                 {/* add category */}
-                <PostCategory setCategory={setCategory}   />
+                <PostCategory setCategory={setCategory} category={category}   />
              </div>
 
             {/* upload button */}

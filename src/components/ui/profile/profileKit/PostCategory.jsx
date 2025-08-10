@@ -4,7 +4,7 @@ import colorSchema from '../../../../colors/colorSchema';
 // icons
 import { IoCheckmarkOutline } from "react-icons/io5";
 
-export default function PostCategory({setCategory }) {
+export default function PostCategory({setCategory  , category}) {
 
     const blogCategories = [
         "Technology",
@@ -48,7 +48,7 @@ export default function PostCategory({setCategory }) {
         "Reviews"
       ];
 
-      const [selectedCategory, setSelectedCategory] = useState(blogCategories[0]);
+      const [selectedCategory, setSelectedCategory] = useState(category || blogCategories[0]);
       const color = colorSchema();
       const [isOpenCategory, setIsOpenCategory] = useState(false);
       const catagoryRef = useRef(null);
