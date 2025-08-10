@@ -68,7 +68,7 @@ export default function PostedItem({data}) {
           
           <button  style={{color: color.textprimary}} onClick={(e) => handleMore(e)} type="button" className='text-[22px] cursor-pointer '><RxDragHandleDots2/></button>
 
-          {isopenpostmore && <PostMore postID={data?._id}  />}
+          {isopenpostmore && <PostMore postID={data?._id} setIsopenpostmore={setIsopenpostmore}  />}
 
         </div>
 

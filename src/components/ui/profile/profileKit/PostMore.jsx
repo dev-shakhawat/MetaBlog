@@ -13,12 +13,16 @@ import { useDispatch } from 'react-redux';
 
 
 
-export default function PostMore({postID}) {
+export default function PostMore({postID , setIsopenpostmore}) {
 
     const color = colorSchema();
     const dispatch = useDispatch();
+    
 
-    console.log(postID);
+    const handleDelete = () => {
+        DeletePost( [postID] , dispatch )
+        setIsopenpostmore(false);
+    }
     
 
   return (
@@ -31,7 +35,7 @@ export default function PostMore({postID}) {
             <CiEdit/>
             <span>Edit</span>
         </button>
-        <button onClick={() => DeletePost( [postID] , dispatch )} type="button" className='flex items-center gap-2 py-1 px-2 cursor-pointer    ' >
+        <button onClick={handleDelete} type="button" className='flex items-center gap-2 py-1 px-2 cursor-pointer    ' >
             <CiTrash/>
             <span>Delete</span>
         </button>
