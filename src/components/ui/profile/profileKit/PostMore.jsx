@@ -26,7 +26,7 @@ export default function PostMore({postID , setIsopenpostmore }) {
     }
 
     const handleEdit = () => { 
-         dispatch(editStatus({isEdit: true , id: postID}))
+         dispatch(editStatus({status: true , id: postID}))
          setIsopenpostmore(false);
     }
     

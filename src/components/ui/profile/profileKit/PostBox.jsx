@@ -36,7 +36,6 @@ export default function PostBox({className = "relative"}) {
     
     
     
-
     const setImageUrl = (file) => {
         
         if(file){
@@ -169,7 +168,7 @@ export default function PostBox({className = "relative"}) {
               <span>Update</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
             </button>} 
-            
+
             {postStatus && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Post</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
