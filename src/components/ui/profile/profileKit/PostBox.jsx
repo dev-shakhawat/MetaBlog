@@ -37,7 +37,7 @@ export default function PostBox({className = "relative" , open , closeFunction ,
     useEffect(() => { 
         if(fetchData){
             (async function() {
-                const data = await axios.get(`${import.meta.env.VITE_BASE_URL}/post/getPostbyID/:${isEdit.id}`, {
+                const data = await axios.get(`${import.meta.env.VITE_BASE_URL}/post/getPostbyID/${isEdit.id}`, {
                     withCredentials: true,
                     headers: {
                         'Content-Type': 'application/json'
