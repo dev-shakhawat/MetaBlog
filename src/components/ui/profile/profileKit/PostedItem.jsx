@@ -15,7 +15,7 @@ import { GoCheckCircle } from "react-icons/go";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import PostMore from './PostMore';
 
-export default function PostedItem({data , setIsEdit}) {
+export default function PostedItem({data }) {
 
     const color  = colorSchema();
     const navigate = useNavigate()
@@ -68,7 +68,7 @@ export default function PostedItem({data , setIsEdit}) {
           
           <button  style={{color: color.textprimary}} onClick={(e) => handleMore(e)} type="button" className='text-[22px] cursor-pointer '><RxDragHandleDots2/></button>
 
-          {isopenpostmore && <PostMore postID={data?._id} setIsopenpostmore={setIsopenpostmore} setIsEdit={setIsEdit}  />}
+          {isopenpostmore && <PostMore postID={data?._id} setIsopenpostmore={setIsopenpostmore}   />}
 
         </div>
 

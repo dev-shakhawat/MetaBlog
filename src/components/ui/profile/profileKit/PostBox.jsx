@@ -18,12 +18,13 @@ import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
 import axios from 'axios';
 
-export default function PostBox({isEdit}) {
+export default function PostBox({className = "relative"}) {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
     const postingstatus = useSelector((state) => state.notify.isPosting);
     const postStatus = useSelector((state) => state.notify.status);
+    const isEdit = useSelector((state) => state.post.isEdit);
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
@@ -114,7 +115,7 @@ export default function PostBox({isEdit}) {
     }
 
   return ( 
-    <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={` relative  duration-300 ease-in-out   md:p-2 p-1 rounded-[5px] md:rounded-[10px] mt-5 `}>
+    <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={`${className}   duration-300 ease-in-out   md:p-2 p-1 rounded-[5px] md:rounded-[10px] mt-5 `}>
 
         {postStatus && <Status status={postStatus.status} message={postStatus.sms} />}
         
@@ -163,12 +164,13 @@ export default function PostBox({isEdit}) {
              </div>
 
             {/* upload button */}
-            {isOpen && isEdit ? <button style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+             {isEdit.status &&
+            <button style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Update</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
-            </button>: 
-
-            <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+            </button>} 
+            
+            {postStatus && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Post</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
             </button>}

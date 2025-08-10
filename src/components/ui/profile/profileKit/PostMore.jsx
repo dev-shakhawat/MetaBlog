@@ -10,10 +10,11 @@ import { CiTrash } from "react-icons/ci";
 import DeletePost from '../../../../helpers/deletePost';
 import colorSchema from '../../../../colors/colorSchema';
 import { useDispatch } from 'react-redux';
+import { editStatus } from '../../../../redux/slices/postSlice';
 
 
 
-export default function PostMore({postID , setIsopenpostmore , setIsEdit}) {
+export default function PostMore({postID , setIsopenpostmore }) {
 
     const color = colorSchema();
     const dispatch = useDispatch();
@@ -25,7 +26,8 @@ export default function PostMore({postID , setIsopenpostmore , setIsEdit}) {
     }
 
     const handleEdit = () => { 
-        setIsEdit(true);
+         dispatch(editStatus({isEdit: true , id: postID}))
+         setIsopenpostmore(false);
     }
     
 
