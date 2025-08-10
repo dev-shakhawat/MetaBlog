@@ -190,13 +190,14 @@ export default function PostBox({className = "relative" , open , closeFunction ,
              </div>
 
             {/* upload button */}
-             {isEdit.status &&
+             {isEdit.status ?
             <button onClick={()=>editPost(isEdit.id , title , text , featuredImage , category , prevImage , dispatch )} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Update</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
-            </button>} 
+            </button>
+            :
 
-            {postStatus && <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
+            <button onClick={handlePostSubmit} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Post</span>
               {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
             </button>}
