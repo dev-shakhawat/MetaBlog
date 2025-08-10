@@ -48,7 +48,7 @@ export default function Profile() {
 
         {/* post box */}
         <PostBox/>
-        {isEdit.status && <PostBox className="fixed top-1/2 left-1/2 -translate-1/2 w-3/4  " open={true} />}
+        {isEdit.status && <PostBox className="fixed top-1/2 left-1/2 -translate-1/2 w-3/4  " open={true} closeFunction={()=> dispatch({type: 'post/editStatus' , payload: {status: false , id: null}})}  />}
 
         {/* posted items */}
         <PostHeader isSelection={allPosts.length > 0 ? true : false} />

@@ -18,7 +18,7 @@ import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
 import axios from 'axios';
 
-export default function PostBox({className = "relative" , open}) {
+export default function PostBox({className = "relative" , open , closeFunction}) {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
@@ -131,7 +131,7 @@ export default function PostBox({className = "relative" , open}) {
             </h2>
 
             {/* post box close button */}
-            {isOpen && <button onClick={handleClosePost} type='button' style={{color: color.textprimary}} className='  cursor-pointer  text-3xl  '  ><IoCloseOutline/></button>}
+            {isOpen && <button onClick={closeFunction || handleClosePost} type='button' style={{color: color.textprimary}} className='  cursor-pointer  text-3xl  '  ><IoCloseOutline/></button>}
         </div>
 
         {/* post box text */}
