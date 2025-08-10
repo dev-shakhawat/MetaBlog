@@ -18,14 +18,14 @@ import Status from '../../../common/Status';
 import convertTime from '../../../../helpers/timeConverter';
 import axios from 'axios';
 
-export default function PostBox({className = "relative"}) {
+export default function PostBox({className = "relative" , open}) {
  
     const color = colorSchema()
     const user = useSelector((state) => state.user.user);
     const postingstatus = useSelector((state) => state.notify.isPosting);
     const postStatus = useSelector((state) => state.notify.status);
     const isEdit = useSelector((state) => state.post.isEdit);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(open || false);
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
     const [image, setImage] = useState(null);

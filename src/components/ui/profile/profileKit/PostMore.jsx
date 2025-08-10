@@ -30,7 +30,6 @@ export default function PostMore({postID , setIsopenpostmore }) {
          setIsopenpostmore(false);
     }
     
-
   return (
     <div onClick={(e) => e.stopPropagation()} style={{color: color.textprimary , background: color.bgprimary   }} className='  rounded-[5px] flex flex-col absolute top-8 right-0    '> 
         <button type="button" className='flex items-center gap-2 py-1 px-2 cursor-pointer    ' >
