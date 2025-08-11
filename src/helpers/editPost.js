@@ -26,9 +26,11 @@ async function editPost(postID , title , description , featuredImage , category 
         setUpdateStatus(false);
         dispatch(loadpost());
         dispatch(hasStatus(data));
+        setTimeout(() => {
+          dispatch(hasStatus(null));
+        } , 2000);
         dispatch(editStatus({status: false , id: null}))
       }
-
 }
 
 
