@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loadpost } from "../redux/slices/postSlice";
 import { editStatus } from "../redux/slices/postSlice";
+import { hasStatus } from "../redux/slices/notificationSlice";
 
 
 async function editPost(postID , title , description , featuredImage , category , prevImage , setUpdateStatus , dispatch){
@@ -21,6 +22,7 @@ async function editPost(postID , title , description , featuredImage , category 
       if(data){
         setUpdateStatus(false);
         dispatch(loadpost());
+        dispatch(hasStatus(data));
         dispatch(editStatus({status: false , id: null}))
       }
 
