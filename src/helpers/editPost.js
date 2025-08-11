@@ -3,8 +3,9 @@ import { loadpost } from "../redux/slices/postSlice";
 import { editStatus } from "../redux/slices/postSlice";
 
 
-async function editPost(postID , title , description , featuredImage , category , prevImage , dispatch){
-
+async function editPost(postID , title , description , featuredImage , category , prevImage , setUpdateStatus , dispatch){
+    
+    setUpdateStatus(true);
     const formData = new FormData();
     formData.append('postID', postID);
     formData.append('title', title);
@@ -17,8 +18,11 @@ async function editPost(postID , title , description , featuredImage , category 
       
       const data = response.data;
       
-      dispatch(loadpost());
-      dispatch(editStatus({status: false , id: null}))
+      if(data){
+        setUpdateStatus(false);
+        dispatch(loadpost());
+        dispatch(editStatus({status: false , id: null}))
+      }
 
 }
 
