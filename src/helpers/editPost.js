@@ -13,7 +13,7 @@ async function editPost(postID , title , description , featuredImage , category 
     formData.append('category', category);
     formData.append('prevImage', prevImage);
 
-    const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/editPost`, formData, { withCredentials: true, });
+    const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/updatePost`, formData, { withCredentials: true, });
       
       const data = response.data;
       
