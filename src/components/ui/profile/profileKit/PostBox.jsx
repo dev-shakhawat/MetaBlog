@@ -194,7 +194,7 @@ export default function PostBox({className = "relative" , open , closeFunction ,
              {isEdit.status ?
             <button onClick={()=>editPost(isEdit.id , title , text , featuredImage , category , prevImage , setUpdateStatus , dispatch  )} style={{background:  (title || text) && featuredImage ? "#4B6BFB" : color.bgprimary , color: (title || text) && featuredImage ? color.switchtext : color.textprimary}} className=' md:py-2  px-5 rounded-[6px] cursor-pointer  text-white font-work-sans font-medium text-base  md:leading-6 flex items-center gap-2   '  type="button">
               <span>Update</span>
-              {postingstatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
+              {updateStatus && <TbLoaderQuarter className='text-xl animate-rotate  '/>}
             </button>
             :
 
