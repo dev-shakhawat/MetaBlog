@@ -20,6 +20,8 @@ async function editPost(postID , title , description , featuredImage , category 
     const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/updatePost`, formData, { withCredentials: true, });
       
       const data = response.response.data;
+      console.log(data);
+      
       if(data){
         setUpdateStatus(false);
         dispatch(hasStatus(data));
