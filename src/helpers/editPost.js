@@ -17,20 +17,26 @@ async function editPost(postID , title , description , featuredImage , category 
     formData.append('category', category);
     formData.append('prevImage', prevImage);
 
-    const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/updatePost`, formData, { withCredentials: true, });
-      
-      const data = response.response.data;
+    try {
+      const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/updatePost`, formData, { withCredentials: true });
+      const data = response.data;
       console.log(data);
       
       if(data){
         setUpdateStatus(false);
         dispatch(hasStatus(data));
-        dispatch(editStatus({status: false , id: null}))
+        dispatch(editStatus({status: false , id: null}));
         dispatch(loadpost());
         setTimeout(() => {
           dispatch(hasStatus(null));
         } , 2000);
       }
+    } catch(error) {
+      setUpdateStatus(false);
+      console.error("Edit post error:", error);
+      dispatch(hasStatus({status: false, sms: error.message || "Update failed"}));
+      setTimeout(() => dispatch(hasStatus(null)), 2000);
+    }
 }
 
 
