@@ -5,6 +5,9 @@ import { hasStatus } from "../redux/slices/notificationSlice";
 
 
 async function editPost(postID , title , description , featuredImage , category , prevImage , setUpdateStatus , dispatch){
+
+  console.log(featuredImage);
+  
     
     setUpdateStatus(true);
     const formData = new FormData();
@@ -17,7 +20,7 @@ async function editPost(postID , title , description , featuredImage , category 
 
     const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/post/updatePost`, formData, { withCredentials: true, });
       
-      const data = response.data;
+      const data = response.data.data;
 
       console.log(data);
       
