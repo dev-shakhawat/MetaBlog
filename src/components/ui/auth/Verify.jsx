@@ -27,7 +27,7 @@ export default function Verify() {
         }
         catch(error){
           if(error?.response?.data){
-            dispatch(hasStatus(error.response.data));
+            dispatch(hasStatus({status: false , message: error.response.data.sms}));
             setTimeout(() => {
               dispatch(hasStatus(null));
             }, 2000);
