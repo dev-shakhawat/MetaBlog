@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputField from '../../../common/InputField'
 import colorSchema from '../../../../colors/colorSchema';
 import { useDispatch } from 'react-redux';
@@ -6,22 +6,46 @@ import { useFormik } from 'formik';
 import { signupValues, signupValuesSchema } from '../signUp/signupValues';
 import Google from '../continueWith/google/Google';
 import Facebook from '../continueWith/facebook/Facebook';
+import axios from 'axios';
+import { hasStatus } from '../../../../redux/slices/notificationSlice';
+import Status from '../../../common/Status';
 
 export default function Signin() {
 
   const color = colorSchema();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
   const { handleChange, handleSubmit, values , errors } = useFormik({
     initialValues: signupValues,
     validationSchema: signupValuesSchema,
-    onSubmit: (values) => {
-      console.log(values);
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+
+      setIsLoading(true);
+
+      try{
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/signIn`, {email: values.email , password: values.password});
+  
+        if(response?.data){
+           dispatch(hasStatus({status: true , message: response.data.sms}));
+           setTimeout(() => {
+            dispatch(hasStatus(null));
+            setIsLoading(false);
+            window.location.reload();
+           }, 1500);
+        }
+      }catch(error){
+        setIsLoading(false);
+        console.log(error);
+      }
+      
     },
   })
 
   return (
     <form className='md:w-1/2 w-4/5 mx-auto xl:mt-20 lg:mt-16 md:mt-12 sm:mt-8 mt-0 ' onSubmit={handleSubmit} >
+    
+    <Status/>
 
     <h2 style={{color: color.textprimary}} className=" font-work-sans font-bold 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg text-base text-center xl:my-10 md:my-7 my-4   " >Sign In</h2>
 
