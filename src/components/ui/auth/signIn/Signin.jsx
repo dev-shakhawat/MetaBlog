@@ -9,6 +9,8 @@ import Facebook from '../continueWith/facebook/Facebook';
 import axios from 'axios';
 import { hasStatus } from '../../../../redux/slices/notificationSlice';
 import Status from '../../../common/Status';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 
 export default function Signin() {
 
@@ -55,7 +57,10 @@ export default function Signin() {
 
         <InputField title="Your password" placeholder={`Your password`} name={`password`} onChange={handleChange} value={values.password} />
 
-        <button type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6   ' >Log In</button>
+        <button type="submit" className='flex items-center justify-center gap-2 py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6   ' >
+          <span>Log In</span>
+          {isLoading && <AiOutlineLoading3Quarters className='animate-rotate'/>}
+        </button>
         
         <div className="flex flex-col md:flex-row items-start md:gap-2 relative ">
             <p style={{color: color.textprimary}} className="font-work-sans text-xs md:text-sm lg:text-base">You haven't an account?</p>
