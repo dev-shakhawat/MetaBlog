@@ -3,10 +3,15 @@ import InputField from '../../common/InputField'
 import colorSchema from '../../../colors/colorSchema';
 import { useParams } from 'react-router';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { hasStatus } from '../../../redux/slices/notificationSlice';
+import Status from '../../common/Status';
 
 export default function Verify() {
 
     const color = colorSchema();
+    const status = useSelector((state) => state.notify.status);
+    const dispatch = useDispatch();
 
     const {id} = useParams();
 
@@ -22,7 +27,10 @@ export default function Verify() {
         }
         catch(error){
           if(error?.response?.data){
-            console.log(error.response.data);
+            dispatch(hasStatus(error.response.data));
+            setTimeout(() => {
+              dispatch(hasStatus(null));
+            }, 2000);
           }
         }
         
@@ -32,6 +40,8 @@ export default function Verify() {
 
   return (
     <div className='md:w-1/2 w-3/4 mx-auto 2xl:pt-35 xl:pt-16 lg:pt-12 md:pt-10 sm:pt-8 pt-4   '>
+
+        {status && <Status/>}
         
         <h2 style={{color: color.textprimary}} className=" font-work-sans font-bold 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base text-center    ">Account Verification</h2>
         <p style={{color: color.textsecondary}} className=" font-work-sans text-xs md:text-sm lg:text-base text-center pb-5  ">Enter the OTP we send to your email</p>
