@@ -6,14 +6,12 @@ import { CiWarning } from "react-icons/ci";
 
 // color
 import colorSchema from '../../colors/colorSchema';
-import { useSelector } from 'react-redux';
-import { hasStatus } from '../../redux/slices/notificationSlice';
+import { useSelector } from 'react-redux'; 
 
 export default function Status() {
 
   const color = colorSchema();
-  const status = useSelector((state) => state.notify.status); 
-  console.log(status);
+  const status = useSelector((state) => state.notify.status);  
   
 
   return (
@@ -22,8 +20,8 @@ export default function Status() {
         
         {/* icons */}
         <button style={{color: color.textprimary}} type="button" className=' w-full text-center flex   items-center justify-center gap-0'>
-          {status === true ? <GoCheckCircle className='inline-block text-2xl '/> : <CiWarning className='inline-block text-2xl '/>}
-          {status === true ? <span className='text-base'>Successfull</span> : <span className='text-base'>Sorry</span>}
+          {status.status === true ? <GoCheckCircle className='inline-block text-2xl '/> : <CiWarning className='inline-block text-2xl '/>}
+          {status.status === true ? <span className='text-base'>Successfull</span> : <span className='text-base'>Sorry</span>}
         </button>
 
         <p style={{color: color.textprimary}} className="text-center mt-2    ">{status.message}</p>

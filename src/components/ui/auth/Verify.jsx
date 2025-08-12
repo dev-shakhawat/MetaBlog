@@ -11,7 +11,6 @@ import { switchAuth } from '../../../redux/slices/authSlice';
 export default function Verify() {
 
     const color = colorSchema();
-    const status = useSelector((state) => state.notify.status);
     const dispatch = useDispatch();
 
     const {id} = useParams();

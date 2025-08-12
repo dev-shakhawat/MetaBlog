@@ -44,7 +44,6 @@ export default function Signup() {
         })
         .catch(error => {
           setIsLoading(false);
-          console.log(error);
         });
         
       }
