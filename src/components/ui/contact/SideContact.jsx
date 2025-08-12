@@ -16,11 +16,9 @@ export default function SideContact() {
   return (
     <div className='flex-1 flex flex-col sm:flex-row lg:flex-col flex-wrap  '>
         
-        <SideContactCard logo={<FaBuilding className='text-2xl opacity-50 ' />} title='Company information:'  text="Themesberg LLC
-Tax id: USXXXXXX"  />
+        <SideContactCard logo={<FaBuilding className='text-2xl opacity-50 ' />} title='Company information:'  text="Jadurchar , Rowmari"  />
         
-        <SideContactCard logo={<TiLocation className='text-2xl opacity-50 ' />} title='Address:'  text="SILVER LAKE, United States 1941 Late Avenue
-Zip Code/Postal code:03875"  />
+        <SideContactCard logo={<TiLocation className='text-2xl opacity-50 ' />} title='Address:'  text="Bangladesh, Rangpur, Kurigram , Rowmari , Code/Postal:5640"  />
         
         <SideContactCard logo={<IoCall className='text-2xl opacity-50 ' />} title='Call us:'  text="Call us to speak to a member of our team. We are always happy to help."  />
     
