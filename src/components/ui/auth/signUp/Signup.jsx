@@ -9,18 +9,21 @@ import Facebook from '../continueWith/facebook/Facebook';
 import { useDispatch, useSelector } from 'react-redux';
 import Status from '../../../common/Status';
 import { hasStatus } from '../../../../redux/slices/notificationSlice';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Signup() {
     
     const color = colorSchema();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const {handleChange , handleSubmit , values , errors} = useFormik({
       initialValues: signupValues,
       validationSchema: signupValuesSchema,
       onSubmit: async (values) => {
         
+        setIsLoading(true);
         await fetch(`${import.meta.env.VITE_BASE_URL}/auth/signup`, {
           method: 'POST',
           headers: {
@@ -34,11 +37,15 @@ export default function Signup() {
         })
         .then(response => response.json())
         .then(data => {
+          setIsLoading(false);
           if(data?.redirect){
             navigate(data.redirect)
           }
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          setIsLoading(false);
+          console.log(error);
+        });
         
       }
     })
@@ -71,7 +78,10 @@ export default function Signup() {
                 <h2 style={{color: color.textprimary}} className=" font-work-sans text-xs md:text-sm lg:text-base   "  >By creating an account, you accept the <Link to={`/terms`} className='font-semibold text-blue-500 ' >Terms and Conditions</Link></h2>
             </div>
 
-            <button onClick={ handleClick } type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6   ' >Create an account</button>
+            <button onClick={ handleClick } type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6 flex items-center gap-2   ' >
+              <span>Create an account</span>
+              {isLoading && <AiOutlineLoading3Quarters className={`animate-rotate  `} />}
+            </button>
             
             <div className="flex gap-2 ">
                 <p style={{color: color.textprimary}} className="font-work-sans text-xs md:text-sm lg:text-base">Already have an account?</p>
