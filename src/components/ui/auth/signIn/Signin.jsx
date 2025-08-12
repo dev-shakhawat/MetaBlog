@@ -10,6 +10,7 @@ import axios from 'axios';
 import { hasStatus } from '../../../../redux/slices/notificationSlice';
 import Status from '../../../common/Status';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { signinValues, signinValuesSchema } from './signinValues';
 
 
 export default function Signin() {
@@ -19,8 +20,8 @@ export default function Signin() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { handleChange, handleSubmit, values , errors } = useFormik({
-    initialValues: signupValues,
-    validationSchema: signupValuesSchema,
+    initialValues: signinValues,
+    validationSchema: signinValuesSchema,
     onSubmit: async (values) => {
 
       setIsLoading(true);
@@ -44,6 +45,13 @@ export default function Signin() {
     },
   })
 
+  const handleError = () => { 
+    console.log(errors);
+    console.log(values);
+    
+    
+  }
+
   return (
     <form className='md:w-1/2 w-4/5 mx-auto xl:mt-20 lg:mt-16 md:mt-12 sm:mt-8 mt-0 ' onSubmit={handleSubmit} >
     
@@ -57,7 +65,7 @@ export default function Signin() {
 
         <InputField title="Your password" placeholder={`Your password`} name={`password`} onChange={handleChange} value={values.password} />
 
-        <button type="submit" className='flex items-center justify-center gap-2 py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6   ' >
+        <button onClick={handleError} type="submit"  className='flex items-center justify-center gap-2 py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6   ' >
           <span>Log In</span>
           {isLoading && <AiOutlineLoading3Quarters className='animate-rotate'/>}
         </button>
