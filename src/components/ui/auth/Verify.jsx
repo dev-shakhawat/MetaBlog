@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import InputField from '../../common/InputField'
 import colorSchema from '../../../colors/colorSchema';
 import { useParams } from 'react-router';
+import axios from 'axios';
 
 export default function Verify() {
 
@@ -11,8 +12,14 @@ export default function Verify() {
 
     const [otp , setOtp] = useState('');
 
-    const handleSubmit = ()=>{
-      if(!otp || otp.length === 8){
+    const handleSubmit = async ()=>{
+      if(otp){
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/verify`, {
+          otp: otp,
+          id: id
+        })
+
+        console.log(response);
         
       }
     }
@@ -26,12 +33,12 @@ export default function Verify() {
 
         <div className="mt-2">
 
-          <InputField  placeholder={`Enter OTP`} className={`mt-2`}    />
+          <InputField  placeholder={`Enter OTP`} className={`mt-2`} onChange={(e) => setOtp(e.target.value)}     />
           
-          {otp.length === 8 ? 
-          <button  onClick={handleSubmit} onChange={(e) => setOtp(e.target.value)} type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
+          {otp.length >= 8 ? 
+          <button  onClick={handleSubmit} type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
           :
-          <button  onClick={handleSubmit} onChange={(e) => setOtp(e.target.value)} type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
+          <button     type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer bg-black/50 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
         }
         </div>
  
