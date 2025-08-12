@@ -7,12 +7,14 @@ import { useDispatch } from 'react-redux';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Status from '../../../common/Status';
 
-export default function GetOtp({setIsotpdone}) {
+export default function GetOtp({setResetPass ,setResetmail , setResetotp}) {
 
     const color = colorSchema();
     const [email , setEmail] = useState('');
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
+    const [otpMatch , setOTPmatch] = useState(false);
+    const [otp , setOtp] = useState('');
 
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -23,7 +25,7 @@ export default function GetOtp({setIsotpdone}) {
       setIsLoading(true);
       try{
         if(emailRegex.test(email)){
-           const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/resetPassword`, {email});
+           const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/resetPasswordOTP`, {email});
            const data = response.data;
            console.log(response);
            
@@ -48,6 +50,26 @@ export default function GetOtp({setIsotpdone}) {
       }
     }
 
+    const handleSubmitOtp = async ()=>{
+      setOTPmatch(true);
+       try{
+         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/matchOTPforResetPass`, {email , otp});
+         const data = response.data;
+         
+         if(data.status){
+            setOTPmatch(false); 
+            setResetmail(email);
+            dispatch(hasStatus({status: true , message: data.sms}));
+            setTimeout(() => {
+              setResetPass("reset");
+              dispatch(hasStatus(null));
+            }, 1500);
+         }
+       }catch(error){ 
+         setOTPmatch(false);
+       }
+    }
+
   return (
     <div className='md:w-1/2 w-3/4 mx-auto 2xl:mt-20 xl:mt-16 lg:mt-12 md:mt-10 sm:mt-8 mt-4   '>
         <Status/>
@@ -65,9 +87,17 @@ export default function GetOtp({setIsotpdone}) {
 
         <div className="mt-2">
 
-          <InputField  placeholder={`Enter OTP`} className={`mt-2`}    />
+          <InputField  placeholder={`Enter OTP`} className={`mt-2`} onChange={(e) => setOtp(e.target.value)}    />
 
-          <button onClick={() => setIsotpdone(true)} type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
+          {otp.length >= 8 ? 
+          <button onClick={handleSubmitOtp}   type="button" className=' flex items-center gap-2  justify-center   py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>
+            <span>Continue</span>
+            {otpMatch && <AiOutlineLoading3Quarters className='animate-rotate' />}
+          </button>
+          :
+          <button     type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer bg-black/50 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
+        }
+
         </div>
 
 

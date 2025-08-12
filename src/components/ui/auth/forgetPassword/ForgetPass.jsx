@@ -4,12 +4,14 @@ import ResetPass from './ResetPass';
 
 export default function ForgetPass() {
 
-    const [isotpdone , setIsotpdone] = useState(false);
+    const [resetPass , setResetPass] = useState("otp");
+    const [resetmail , setResetmail] = useState('');  
 
   return (
     <div>
         
-        {isotpdone ? <ResetPass/> : <GetOtp setIsotpdone={setIsotpdone}/>}
+        {resetPass === "otp" && <GetOtp setResetPass={setResetPass} setResetmail={setResetmail}  />}
+        {resetPass === "reset" && <ResetPass resetmail={resetmail}/>}
 
     </div>
   )
