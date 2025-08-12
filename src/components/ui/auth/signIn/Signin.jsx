@@ -39,7 +39,7 @@ export default function Signin() {
         }
       }catch(error){
         setIsLoading(false);
-        dispatch(hasStatus({status: false , message: error.message || error?.response?.data?.sms}));
+        dispatch(hasStatus({status: false , message:  error?.response?.data?.sms}));
         setTimeout(() => {
           dispatch(hasStatus(null));
         }, 1500);
