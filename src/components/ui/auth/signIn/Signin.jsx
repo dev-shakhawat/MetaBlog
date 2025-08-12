@@ -25,6 +25,10 @@ export default function Signin() {
     onSubmit: async (values) => {
 
       setIsLoading(true);
+      console.log(values.email);
+      console.log(values.password);
+      
+      
 
       try{
         const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/auth/signin`, {email: values.email , password: values.password});
