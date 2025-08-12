@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import InputField from '../../common/InputField'
 import colorSchema from '../../../colors/colorSchema';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { hasStatus } from '../../../redux/slices/notificationSlice';
@@ -12,6 +12,7 @@ export default function Verify() {
 
     const color = colorSchema();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {id} = useParams();
 
@@ -32,6 +33,7 @@ export default function Verify() {
           if(data.status){
             dispatch(hasStatus({status: true , message: data.sms}));
             dispatch(switchAuth(data.redirect));
+            navigate('/auth');
             setTimeout(() => {
               dispatch(hasStatus(null));
             }, 2000);
