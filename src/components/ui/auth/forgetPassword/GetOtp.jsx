@@ -17,6 +17,8 @@ export default function GetOtp({setIsotpdone}) {
         if(emailRegex.test(email)){
            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/resetPassword`, {email});
            const data = response.data;
+           console.log(response);
+           
            if(data.status){
               dispatch(hasStatus({status: true , message: data.sms}));
               setTimeout(() => {
