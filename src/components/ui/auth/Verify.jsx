@@ -1,8 +1,7 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import InputField from '../../common/InputField'
 import colorSchema from '../../../colors/colorSchema';
 import { useParams } from 'react-router';
-import OtpInput from 'react-otp-input';
 
 export default function Verify() {
 
