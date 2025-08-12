@@ -33,9 +33,10 @@ export default function Verify() {
           if(data.status){
             dispatch(hasStatus({status: true , message: data.sms}));
             dispatch(switchAuth(data.redirect));
-            navigate('/auth');
+            
             setTimeout(() => {
               dispatch(hasStatus(null));
+              navigate('/auth');
             }, 2000);
           } 
            
