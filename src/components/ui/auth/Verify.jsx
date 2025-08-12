@@ -14,10 +14,7 @@ export default function Verify() {
 
     const handleSubmit = async ()=>{
       if(otp){
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/verify`, {
-          otp: otp,
-          id: id
-        })
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/verify`, JSON.stringify({id, otp}));
 
         console.log(response);
         
