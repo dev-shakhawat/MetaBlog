@@ -78,7 +78,7 @@ export default function Signup() {
                 <h2 style={{color: color.textprimary}} className=" font-work-sans text-xs md:text-sm lg:text-base   "  >By creating an account, you accept the <Link to={`/terms`} className='font-semibold text-blue-500 ' >Terms and Conditions</Link></h2>
             </div>
 
-            <button onClick={ handleClick } type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6 flex items-center gap-2   ' >
+            <button onClick={ handleClick } type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6 flex items-center gap-2 justify-center   ' >
               <span>Create an account</span>
               {isLoading && <AiOutlineLoading3Quarters className={`animate-rotate  `} />}
             </button>
