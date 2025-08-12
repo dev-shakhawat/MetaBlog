@@ -18,6 +18,8 @@ export default function Verify() {
 
     const [otp , setOtp] = useState(''); 
     
+    console.log(id);
+    
 
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -52,10 +54,24 @@ export default function Verify() {
         
       }
     }
-    
 
+    const handleResetOTP = async ()=>{
+      try{
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/reSendOtp`, {userID: id});
+        const data = response.data;
+        if(data.status){
+          dispatch(hasStatus({status: true , message: data.sms}));
+          setTimeout(() => {
+            dispatch(hasStatus(null));
+          }, 1500);
+        }
+      }catch(error){
+        console.log(error);
+      }
+    }
+    
   return (
-    <div className='md:w-1/2 w-3/4 mx-auto 2xl:pt-35 xl:pt-16 lg:pt-12 md:pt-10 sm:pt-8 pt-4   '>
+    <div className='md:w-1/2 w-3/4 mx-auto 2xl:pt-35 xl:pt-33 lg:pt-30 md:pt-25 sm:pt-20 pt-15   '>
 
         <Status/>
         
@@ -64,7 +80,10 @@ export default function Verify() {
 
         <div className="mt-2">
 
-          <InputField  placeholder={`Enter OTP`} className={`mt-2`} onChange={(e) => setOtp(e.target.value)}     />
+          <div className="flex gap-2 ">
+            <InputField  placeholder={`Enter OTP`} className={`flex-1   `} onChange={(e) => setOtp(e.target.value)}     />
+            <button onClick={handleResetOTP} type="button" className=' px-3 rounded-[5px] cursor-pointer   bg-blue-500 text-white font-work-sans   text-xs md:text-base  '>Re-send</button>
+          </div>
           
           {otp.length >= 8 ? 
           <button  onClick={handleSubmit} type="button" className='py-2 w-full mt-2 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium  text-sm md:text-base leading-6 '>Continue</button>
