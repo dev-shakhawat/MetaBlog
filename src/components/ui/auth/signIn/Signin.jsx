@@ -39,17 +39,22 @@ export default function Signin() {
         }
       }catch(error){
         setIsLoading(false);
-        console.log(error);
+        dispatch(hasStatus({status: false , message: error.message || error?.response?.data?.sms}));
+        setTimeout(() => {
+          dispatch(hasStatus(null));
+        }, 1500);
       }
       
     },
   })
 
   const handleError = () => { 
-    console.log(errors);
-    console.log(values);
-    
-    
+    if(errors.email || errors.password){
+      dispatch(hasStatus({status: false , message: errors.email || errors.password}));
+      setTimeout(() => {
+        dispatch(hasStatus(null));
+      }, 2000)
+    } 
   }
 
   return (
