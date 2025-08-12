@@ -14,9 +14,17 @@ export default function Verify() {
 
     const handleSubmit = async ()=>{
       if(otp){
-        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/verifyAccount`, {id, otp});
-
-        console.log(response);
+        
+        try{
+          const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/verifyAccount`, {id, otp});
+          const data = response.data;
+          console.log(data);
+        }
+        catch(error){
+          if(error?.response?.data){
+            console.log(error.response.data);
+          }
+        }
         
       }
     }
