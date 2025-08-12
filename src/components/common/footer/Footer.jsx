@@ -25,7 +25,7 @@ export default function Footer() {
                 <ul style={{color: color.textprimary}} className="flex flex-col  xl:mt-10 lg:mt-8 md:mt-6 mt-2  ">
                     <li className="flex items-center lg:text-[18px] md:text-base text-sm gap-1 ">
                         <span className="font-semibold">Email: </span>
-                        <Link className="font-normal" to={`mailto:info@jstemplate.net`}>info@jstemplate.net</Link>
+                        <Link className="font-normal" to={`mailto:info@jstemplate.net`}>inform.shakhawat@gmail.com</Link>
                     </li>
                     <li className="flex items-center lg:text-[18px] md:text-base text-sm gap-1 ">
                         <span className="font-semibold">Phone: </span>
