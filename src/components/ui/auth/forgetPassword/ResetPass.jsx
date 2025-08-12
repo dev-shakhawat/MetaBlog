@@ -25,7 +25,7 @@ export default function ResetPass({resetmail}) {
       setIsLoading(true);
       if(password === '') return
        try{
-         const response  = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/resetPassword`, {email: resetmail , password});
+         const response  = await axios.patch(`${import.meta.env.VITE_BASE_URL}/auth/resetPassword`, {email: resetmail , password});
 
          const data = response.data;
          if(data.status){
