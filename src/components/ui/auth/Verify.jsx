@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputField from '../../common/InputField'
 import colorSchema from '../../../colors/colorSchema';
 import { useParams } from 'react-router';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { hasStatus } from '../../../redux/slices/notificationSlice';
 import Status from '../../common/Status';
+import { switchAuth } from '../../../redux/slices/authSlice';
 
 export default function Verify() {
 
@@ -15,7 +16,12 @@ export default function Verify() {
 
     const {id} = useParams();
 
-    const [otp , setOtp] = useState('');
+    const [otp , setOtp] = useState(''); 
+    
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
     const handleSubmit = async ()=>{
       if(otp){
@@ -23,7 +29,17 @@ export default function Verify() {
         try{
           const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/verifyAccount`, {id, otp});
           const data = response.data;
-          console.log(data);
+
+          if(data.status){
+            dispatch(hasStatus({status: true , message: data.sms}));
+            setTimeout(() => {
+              dispatch(hasStatus(null));
+            }, 2000);
+          }
+          if(data.status.redirect){
+            dispatch(switchAuth(data.status.redirect));
+          }
+           
         }
         catch(error){
           if(error?.response?.data){
