@@ -141,6 +141,8 @@ export default function PostBox({className = "relative" , open , closeFunction ,
         setIsOpen(false);
     }
 
+
+
   return ( 
     <div style={{background: color.bgsecondary , height: isOpen ? "auto" : "auto"  }} className={`${className}   duration-300 ease-in-out   md:p-2 p-1 rounded-[5px] md:rounded-[10px] mt-5 `}>
 

@@ -1,19 +1,22 @@
 import React from 'react'
 import colorSchema from '../../../../colors/colorSchema'
 import { signupValues, signupValuesSchema } from './signupValues';
-import { useFormik } from 'formik';
+import { useFormik , Formik, Field, Form } from 'formik'; 
 import InputField from '../../../common/InputField';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Google from '../continueWith/google/Google';
 import Facebook from '../continueWith/facebook/Facebook';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Status from '../../../common/Status';
+import { hasStatus } from '../../../../redux/slices/notificationSlice';
 
 export default function Signup() {
     
     const color = colorSchema();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const { handleChange, handleSubmit, values , errors } = useFormik({
+    const {handleChange , handleSubmit , values , errors} = useFormik({
       initialValues: signupValues,
       validationSchema: signupValuesSchema,
       onSubmit: async (values) => {
@@ -30,16 +33,29 @@ export default function Signup() {
           }) 
         })
         .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-
-    },
-});
- 
-    
+        .then(data => {
+          if(data?.redirect){
+            navigate(data.redirect)
+          }
+        })
+        .catch(error => console.log(error));
+        
+      }
+    })
+    const handleClick = () => {
+      if (errors.name || errors.email || errors.password) {
+        dispatch(hasStatus({status: false , message: errors.name || errors.email || errors.password}));
+        setTimeout(() => {
+          dispatch(hasStatus(null));
+        }, 3000)
+      }
+      
+    }
   return (
     
     <form className='md:w-1/2 w-4/5 mx-auto xl:mt-20 lg:mt-16 md:mt-12 sm:mt-8 mt-0 ' onSubmit={handleSubmit} >
+
+        <Status />
 
         <h2 style={{color: color.textprimary}} className=" font-work-sans font-bold 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg text-base text-center  xl:my-10 md:my-7 my-4    " >Sign Up</h2>
 
@@ -55,7 +71,7 @@ export default function Signup() {
                 <h2 style={{color: color.textprimary}} className=" font-work-sans text-xs md:text-sm lg:text-base   "  >By creating an account, you accept the <Link to={`/terms`} className='font-semibold text-blue-500 ' >Terms and Conditions</Link></h2>
             </div>
 
-            <button type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6   ' >Create an account</button>
+            <button onClick={ handleClick } type="submit" className=' py-3 px-5 rounded-[6px] cursor-pointer  bg-blue-500 text-white font-work-sans font-medium md:text-base text-sm leading-6   ' >Create an account</button>
             
             <div className="flex gap-2 ">
                 <p style={{color: color.textprimary}} className="font-work-sans text-xs md:text-sm lg:text-base">Already have an account?</p>

@@ -20,6 +20,7 @@ import Blogs from "./pages/Blogs";
 import Auth from "./pages/Auth";
 import Contact from "./pages/Contact";
 import Details from "./pages/Details";
+import Verify from "./components/ui/auth/Verify";
 
 
 function App() {
@@ -36,8 +37,6 @@ function App() {
           'Content-Type': 'application/json',
         },
       });
-
-      console.log(response);
       
 
       const data = await response.json()
@@ -59,6 +58,7 @@ function App() {
         <Route path="/blogs/:id" element={<Details/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/auth" element={<Auth/>} />
+        <Route path="/verify/:id" element={<Verify/>} />
       </Route>
     </Routes>
   </BrowserRouter>
