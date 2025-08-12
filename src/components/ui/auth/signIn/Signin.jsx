@@ -31,7 +31,7 @@ export default function Signin() {
       
 
       try{
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/auth/signin`, {email: values.email , password: values.password});
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/auth/signin`, {email: values.email , password: values.password});
   
         if(response?.data){
            dispatch(hasStatus({status: true , message: response.data.sms}));
