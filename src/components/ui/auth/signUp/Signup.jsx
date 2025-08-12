@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import colorSchema from '../../../../colors/colorSchema'
 import { signupValues, signupValuesSchema } from './signupValues';
-import { useFormik , Formik, Field, Form } from 'formik'; 
+import { useFormik  } from 'formik'; 
 import InputField from '../../../common/InputField';
 import { Link, useNavigate } from 'react-router';
 import Google from '../continueWith/google/Google';
 import Facebook from '../continueWith/facebook/Facebook';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Status from '../../../common/Status';
 import { hasStatus } from '../../../../redux/slices/notificationSlice';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
